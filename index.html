@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>長期照顧服務申請指南</title>
+  <style>
+    :root {
+      --primary: #1a6b4a;
+      --primary-light: #2d9b6e;
+      --primary-pale: #e8f5ef;
+      --accent: #e07b39;
+      --accent-light: #fdf0e6;
+      --text: #2c2c2c;
+      --text-muted: #666;
+      --border: #d4e8dc;
+      --bg: #f7fbf8;
+      --white: #ffffff;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .header-top {
+      padding: 18px 32px 14px;
+    }
+    .header-top h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .header-top p {
+      font-size: 0.88rem;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+    nav {
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    nav a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    nav a:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(120deg, var(--primary-pale) 0%, #d4efe3 100%);
+      padding: 48px 32px 36px;
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+    }
+    .hero h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .hero p {
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 24px;
+      font-size: 1.05rem;
+    }
+    .hotline {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 16px rgba(224,123,57,0.35);
+    }
+    .hotline span { font-size: 0.9rem; font-weight: 400; display: block; }
+
+    /* ── LAYOUT ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    section { margin-bottom: 56px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-title .icon {
+      width: 44px; height: 44px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .section-title h2 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary-light);
+      padding-bottom: 4px;
+    }
+
+    /* ── CARDS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .card h3 {
+      color: var(--primary);
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card h3 .badge {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+    }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 6px; color: var(--text); }
+
+    /* ── STEPS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 44px;
+      bottom: -10px;
+      width: 2px;
+      background: var(--border);
+    }
+    .step-num {
+      width: 40px; height: 40px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+      z-index: 1;
+    }
+    .step-body {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      flex: 1;
+    }
+    .step-body h3 { color: var(--primary); margin-bottom: 6px; }
+    .step-body p, .step-body ul { color: var(--text-muted); font-size: 0.95rem; }
+    .step-body ul { padding-left: 18px; }
+    .step-body ul li { margin-bottom: 4px; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 0.95rem;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #eef3f0;
+      text-align: center;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--primary-pale); }
+    .level-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ── INFO BOXES ── */
+    .info-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--primary);
+      margin-bottom: 16px;
+    }
+    .info-box h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.05rem; }
+    .info-box ul { padding-left: 20px; }
+    .info-box li { margin-bottom: 6px; }
+
+    .warn-box {
+      background: var(--accent-light);
+      border-left-color: var(--accent);
+    }
+    .warn-box h3 { color: var(--accent); }
+
+    /* ── CO-PAY TABLE ── */
+    .copay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .copay-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--border);
+      text-align: center;
+    }
+    .copay-card.low { border-color: #4caf50; }
+    .copay-card.mid { border-color: #2196f3; }
+    .copay-card.gen { border-color: var(--accent); }
+    .copay-card .label {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .copay-card.low .label { color: #2e7d32; }
+    .copay-card.mid .label { color: #1565c0; }
+    .copay-card.gen .label { color: #bf360c; }
+    .copay-card .rate {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 8px 0 4px;
+    }
+    .copay-card.low .rate { color: #4caf50; }
+    .copay-card.mid .rate { color: #2196f3; }
+    .copay-card.gen .rate { color: var(--accent); }
+    .copay-card p { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* ── SERVICE TAGS ── */
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: var(--primary-pale);
+      color: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ── HIGHLIGHT AMOUNT ── */
+    .amount {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .unit { font-size: 0.85rem; color: var(--text-muted); margin-left: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 28px 16px;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.9); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-top { padding: 14px 16px 10px; }
+      .header-top h1 { font-size: 1.2rem; }
+      nav a { padding: 8px 12px; font-size: 0.82rem; }
+      .hero { padding: 32px 16px 28px; }
+      .hero h2 { font-size: 1.4rem; }
+      main { padding: 24px 12px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <h1>🏥 長期照顧服務申請指南</h1>
+    <p>依據「長期照顧服務申請及給付辦法」整理，提供民眾快速查詢</p>
+  </div>
+  <nav>
+    <a href="#eligibility">申請資格</a>
+    <a href="#apply">如何申請</a>
+    <a href="#levels">失能等級與額度</a>
+    <a href="#services">服務內容</a>
+    <a href="#copay">部分負擔</a>
+    <a href="#special">特殊情況</a>
+    <a href="#aids">輔具補助</a>
+    <a href="#faq">常見問題</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <h2>需要長照服務？從這裡開始</h2>
+  <p>無論是您本人或家中長輩需要照顧協助，只要符合資格，都可以申請政府補助的長照服務。</p>
+  <div class="hotline">
+    📞 1966 長照專線
+    <span>免費撥打，全年無休</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── 1. 申請資格 ── -->
+  <section id="eligibility">
+    <div class="section-title">
+      <div class="icon">✅</div>
+      <h2>一、申請資格</h2>
+    </div>
+    <p style="color:var(--text-muted); margin-bottom:18px;">因身心失能，且符合以下任一條件者，均可申請長照服務：</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>👴 年長者</h3>
+        <ul>
+          <li><strong>65 歲以上</strong>（一般民眾）</li>
+          <li><strong>55 歲以上</strong>（原住民身分）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>♿ 身心障礙者</h3>
+        <ul>
+          <li>領有<strong>身心障礙證明</strong>者（不限年齡）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🧠 失智症患者</h3>
+        <ul>
+          <li><strong>50 歲以上</strong>且經確診之失智症患者</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box warn-box" style="margin-top:18px;">
+      <h3>⚠️ 不適用情況</h3>
+      <ul>
+        <li>住宿式機構（如護理之家、養護機構）的服務使用者，不適用本辦法，另有其他規定</li>
+        <li>評估結果為<strong>第1級（未失能）</strong>者，不納入給付範圍</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 2. 如何申請 ── -->
+  <section id="apply">
+    <div class="section-title">
+      <div class="icon">📋</div>
+      <h2>二、如何申請長照服務</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>撥打 1966 或向照管中心申請</h3>
+          <p>撥打長照服務專線 <strong>1966</strong>，或直接向當地<strong>長期照顧管理中心（照管中心）</strong>或<strong>縣市主管機關</strong>提出申請。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>專員到府評估</h3>
+          <p>照管中心會派專員到家中進行失能程度評估，評估項目包含日常生活活動（ADL）、工具性日常活動（IADL）、認知功能等。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>核定長照需要等級與給付額度</h3>
+          <p>依評估結果核定<strong>第2至第8級</strong>的長照需要等級，並核定每月可使用的服務給付額度。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>擬訂照顧計畫</h3>
+          <p>社區整合型服務中心（A單位）的個案管理員會依需求擬訂照顧計畫，連結適合的服務。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>開始接受服務</h3>
+          <p>服務提供單位依照顧計畫定期提供服務，您只需支付<strong>部分負擔</strong>費用，其餘由政府補助。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h3>定期複評（約每年一次）</h3>
+          <p>身體狀況改變時會重新評估等級與額度。若連續兩次評估均為第8級，可延長至<strong>每2年複評一次</strong>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. 失能等級與給付額度 ── -->
+  <section id="levels">
+    <div class="section-title">
+      <div class="icon">📊</div>
+      <h2>三、失能等級與每月給付額度</h2>
+    </div>
+    <p style="color:var(--text-muted); margin-bottom:18px;">依失能程度分為第2級至第8級，等級越高代表失能程度越嚴重，可使用的服務額度也越多。</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>長照需要等級</th>
+            <th>照顧及<br>專業服務<br>（元／月）</th>
+            <th>交通接送<br>第一類（月）</th>
+            <th>交通接送<br>第二類（月）</th>
+            <th>交通接送<br>第三類（月）</th>
+            <th>交通接送<br>第四類（月）</th>
+            <th>輔具及無障礙<br>改善（3年）</th>
+            <th>喘息服務<br>（年）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="level-badge">第2級</span></td>
+            <td><strong>10,020</strong></td>
+            <td rowspan="7">1,680</td>
+            <td rowspan="7">1,840</td>
+            <td rowspan="7">2,000</td>
+            <td rowspan="7">2,400</td>
+            <td rowspan="7">40,000</td>
+            <td rowspan="5" style="background:#e8f5ef">32,340</td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第3級</span></td>
+            <td><strong>15,460</strong></td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第4級</span></td>
+            <td><strong>18,580</strong></td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第5級</span></td>
+            <td><strong>24,100</strong></td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第6級</span></td>
+            <td><strong>28,070</strong></td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第7級</span></td>
+            <td><strong>32,090</strong></td>
+            <td rowspan="2" style="background:#d4efe3;font-weight:700;color:#1a6b4a;">48,510</td>
+          </tr>
+          <tr>
+            <td><span class="level-badge">第8級</span></td>
+            <td><strong>36,180</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">※ 交通接送分類：第一類（都市小縣市）、第二類（中型縣市）、第三類（大型縣市）、第四類（偏遠地區）。各類額度不可互相流用。</p>
+    <div class="info-box" style="margin-top:18px;">
+      <h3>📌 額度使用規則</h3>
+      <ul>
+        <li><strong>照顧及交通接送：</strong>按月給付，未使用完的額度可保留6個月，期滿歸零</li>
+        <li><strong>輔具及居家無障礙改善：</strong>每3年給付一次</li>
+        <li><strong>喘息服務：</strong>每年給付一次</li>
+        <li>各項目額度<strong>不可互相流用</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 4. 服務內容 ── -->
+  <section id="services">
+    <div class="section-title">
+      <div class="icon">🤝</div>
+      <h2>四、長照服務內容</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🏠 居家照顧服務</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">服務人員到家中提供協助</p>
+        <div class="tag-grid">
+          <span class="tag">基本身體清潔</span>
+          <span class="tag">協助沐浴洗頭</span>
+          <span class="tag">協助進食</span>
+          <span class="tag">餐食照顧（備餐）</span>
+          <span class="tag">翻身拍背</span>
+          <span class="tag">肢體關節活動</span>
+          <span class="tag">陪同就醫</span>
+          <span class="tag">家務協助</span>
+          <span class="tag">陪伴服務</span>
+          <span class="tag">代購代送服務</span>
+          <span class="tag">管路清潔護理</span>
+          <span class="tag">血糖監測</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🏢 日間照顧服務</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">白天到日照中心接受照顧，夜晚回家</p>
+        <div class="tag-grid">
+          <span class="tag">生活照顧</span>
+          <span class="tag">健康促進</span>
+          <span class="tag">文康休閒活動</span>
+          <span class="tag">備餐服務</span>
+          <span class="tag">家屬諮詢</span>
+        </div>
+        <p style="margin-top:12px;font-size:0.9rem;">可選全日或半日服務，交通接送另計</p>
+      </div>
+      <div class="card">
+        <h3>👨‍👩‍👧 家庭托顧服務</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">由家庭托顧服務員在其家中提供照顧</p>
+        <div class="tag-grid">
+          <span class="tag">身體照顧</span>
+          <span class="tag">日常生活照顧</span>
+          <span class="tag">安全性照顧</span>
+          <span class="tag">備餐服務</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🩺 專業服務</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">由專業人員到宅提供評估與指導</p>
+        <div class="tag-grid">
+          <span class="tag">復能照護（物理／職能治療）</span>
+          <span class="tag">營養照護</span>
+          <span class="tag">進食與吞嚥照護</span>
+          <span class="tag">居家護理指導</span>
+          <span class="tag">困擾行為照護</span>
+          <span class="tag">居家環境安全規劃</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🚌 交通接送服務</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;"><strong>限用於下列目的</strong></p>
+        <div class="tag-grid">
+          <span class="tag">就醫接送</span>
+          <span class="tag">定期復健接送</span>
+          <span class="tag">透析治療（洗腎）接送</span>
+        </div>
+        <p style="margin-top:12px;font-size:0.88rem;color:var(--text-muted);">由持職業駕照駕駛員提供，各地費率由地方政府公告</p>
+      </div>
+      <div class="card">
+        <h3>😮‍💨 喘息服務（給家庭照顧者）</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">讓辛苦的家庭照顧者得到暫時休息</p>
+        <div class="tag-grid">
+          <span class="tag">居家喘息（每次2小時起）</span>
+          <span class="tag">日照中心喘息（全日／半日）</span>
+          <span class="tag">機構住宿式喘息</span>
+          <span class="tag">巷弄長照站喘息</span>
+          <span class="tag">夜間喘息</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-box warn-box" style="margin-top:20px;">
+      <h3>⚠️ 無喘息服務的情況</h3>
+      <ul>
+        <li>長照給付對象無家庭照顧者，且無其他可協助照顧的人</li>
+        <li>已依身心障礙者相關法令接受臨時及短期照顧服務者</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 5. 部分負擔 ── -->
+  <section id="copay">
+    <div class="section-title">
+      <div class="icon">💰</div>
+      <h2>五、部分負擔（自付金額）</h2>
+    </div>
+    <p style="color:var(--text-muted); margin-bottom:22px;">使用長照服務需依身分別自付部分費用，其餘由政府補助。費用由服務單位於服務後向您收取。</p>
+    <div class="copay-grid">
+      <div class="copay-card low">
+        <div class="label">🟢 長照低收入戶</div>
+        <div class="rate">0%</div>
+        <p>列冊低收入戶、中低收入戶，或符合中低收入老人生活津貼（第一款）資格者</p>
+        <p style="margin-top:8px;font-weight:600;">完全免費</p>
+      </div>
+      <div class="copay-card mid">
+        <div class="label">🔵 長照中低收入戶</div>
+        <div class="rate">5%</div>
+        <p>符合中低收入老人生活津貼（第二款）或身心障礙者生活補助資格者</p>
+        <p style="margin-top:8px;font-size:0.83rem;">照顧及專業服務部分負擔5%</p>
+      </div>
+      <div class="copay-card gen">
+        <div class="label">🟠 長照一般戶</div>
+        <div class="rate">16%</div>
+        <p>前兩款以外者</p>
+        <p style="margin-top:8px;font-size:0.83rem;">照顧及專業服務部分負擔16%</p>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:20px;">
+      <h3>📌 免部分負擔的項目</h3>
+      <ul>
+        <li>照顧管理服務（AA01、AA02）</li>
+        <li>政策鼓勵服務（如夜間、例假日加計、特殊案例加計等）</li>
+        <li>輪椅量身訂製（EC03）、輪椅附加功能（EC04～EC06）、擺位系統、氣墊床等特定輔具</li>
+      </ul>
+    </div>
+    <div class="info-box warn-box" style="margin-top:14px;">
+      <h3>⚠️ 需自行負擔的情況</h3>
+      <ul>
+        <li>超過核定給付額度的部分</li>
+        <li>輔具購置超過補助上限的差額</li>
+        <li>非照顧組合表所列的服務</li>
+        <li>與家人共用區域之家務協助，需自付50%</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 6. 特殊情況 ── -->
+  <section id="special">
+    <div class="section-title">
+      <div class="icon">⚡</div>
+      <h2>六、特殊情況說明</h2>
+    </div>
+    <div class="info-box">
+      <h3>👨‍👩‍👦 聘僱外籍家庭看護工</h3>
+      <ul>
+        <li>已聘僱外籍看護工者，<strong>照顧及專業服務額度只給付30%</strong></li>
+        <li>且只能用於<strong>專業服務照顧組合</strong>（如復能、護理指導等）</li>
+        <li>交通接送、輔具、喘息服務額度<strong>不受限制，仍可正常使用</strong></li>
+        <li>例外：到宅沐浴車服務仍可使用（但額度仍僅30%）</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>🏔️ 居住原住民區或離島</h3>
+      <ul>
+        <li>服務支付價格較一般地區<strong>提高約20%</strong>，以鼓勵服務單位在資源不足地區提供服務</li>
+        <li>您的給付額度計算方式<strong>不變</strong>，不受較高的支付價格影響</li>
+        <li>涵蓋地區：花蓮、臺東、澎湖、金門、連江等全部離島，以及各縣市原住民鄉鎮</li>
+      </ul>
+    </div>
+    <div class="info-box warn-box">
+      <h3>🚨 緊急臨時服務</h3>
+      <ul>
+        <li>若發生突發性照顧需求，服務單位可<strong>先行提供臨時服務</strong></li>
+        <li>服務後須立即通知社區整合型服務中心擬訂照顧計畫，並經照管中心確認</li>
+        <li>可臨時提供的服務包含：基本身體清潔、協助沐浴、陪同就醫、尿管鼻胃管清潔等</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>📅 複評時額度如何計算</h3>
+      <ul>
+        <li><strong>複評等級不變：</strong>複評前剩餘額度可保留至複評計畫核定當月月底</li>
+        <li><strong>複評等級升高：</strong>新等級自核定當月1日生效，複評前剩餘額度可保留至當月月底</li>
+        <li><strong>複評等級降低：</strong>新等級自核定次月1日生效（對您有利的緩衝期），複評前剩餘額度可保留至複評結果核定前一日</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 7. 輔具補助重點 ── -->
+  <section id="aids">
+    <div class="section-title">
+      <div class="icon">🦽</div>
+      <h2>七、輔具及居家無障礙改善補助（3年40,000元）</h2>
+    </div>
+    <p style="color:var(--text-muted);margin-bottom:18px;">每3年最高可申請40,000元（第7-8級48,510元），用於購置輔具或居家無障礙環境改善。</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🚶 移動輔具</h3>
+        <ul>
+          <li>枴杖（不銹鋼/鋁製）</li>
+          <li>助行器</li>
+          <li>帶輪型助步車（助行椅）</li>
+          <li>輪椅（A/B/C三款可選）</li>
+          <li>電動輪椅（限租賃）</li>
+          <li>電動代步車（限租賃）</li>
+          <li>移位機、移位板、移位腰帶</li>
+          <li>爬梯機</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🛏️ 生活照顧輔具</h3>
+        <ul>
+          <li>馬桶增高器、便盆椅、沐浴椅</li>
+          <li>居家用照顧床（電動）</li>
+          <li>氣墊床（預防褥瘡）</li>
+          <li>輪椅座墊（多種款式）</li>
+          <li>足部照護用具</li>
+          <li>衣著用輔具、飲食用輔具</li>
+          <li>居家用生活輔具</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🏠 居家無障礙改善</h3>
+        <ul>
+          <li>安裝固定/可動式扶手</li>
+          <li>設置斜坡板或固定斜坡道</li>
+          <li>消除地面高低差</li>
+          <li>防滑措施（貼條/地面）</li>
+          <li>改善門（加寬/換推拉門）</li>
+          <li>改善浴缸（改淋浴）</li>
+          <li>改善馬桶（蹲改坐）</li>
+          <li>改善流理台高度</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box warn-box" style="margin-top:16px;">
+      <h3>📌 注意事項</h3>
+      <ul>
+        <li>部分輔具需由輔具評估人員（物理治療師或職能治療師）出具評估報告才能申請</li>
+        <li>已依身心障礙者身分申購且未達最低使用年限的相同輔具，<strong>不可重複申請</strong></li>
+        <li>購置費用超過補助上限的差額，需自行負擔</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 8. 常見問題 ── -->
+  <section id="faq">
+    <div class="section-title">
+      <div class="icon">❓</div>
+      <h2>八、常見問題</h2>
+    </div>
+    <div class="info-box">
+      <h3>Q：我已聘僱外籍看護工，還可以申請長照嗎？</h3>
+      <p>可以，但照顧及專業服務額度只給付30%，且限用於復能、護理等專業服務。交通接送、輔具、喘息服務仍可正常申請。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：長照服務額度沒用完可以累積嗎？</h3>
+      <p>可以。每月未使用完的照顧及交通接送額度，可保留於照顧計畫核定當月起算<strong>6個月內</strong>使用，到期仍未使用則歸零。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：住在偏遠地區，可以申請長照服務嗎？</h3>
+      <p>可以。偏遠地區（包含原住民區及離島）的服務費率較高，政府補助服務單位更多費用以鼓勵前往服務，您的給付額度計算方式不變。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：多久需要重新評估一次？</h3>
+      <p>一般每<strong>1年</strong>評估一次。若連續兩次評估結果都是第8級（應間隔達11個月），則複評期間延長為<strong>24個月</strong>。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：如果突然有緊急照顧需求怎麼辦？</h3>
+      <p>服務單位可先行提供臨時服務，但服務後需立即通知個案管理員擬訂照顧計畫，並經照管中心確認後才可申請費用。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：喘息服務怎麼使用？</h3>
+      <p>喘息服務是給<strong>家庭照顧者</strong>喘息使用的，可選擇居家喘息（服務人員到家）、日間照顧中心喘息或機構住宿喘息。使用期間內不可同時申請其他相同性質補助。</p>
+    </div>
+    <div class="info-box">
+      <h3>Q：長照服務超過核定額度，費用誰出？</h3>
+      <p>超過核定額度的部分需<strong>自行負擔全額</strong>。請事先規劃每月用量，避免超支。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>📞 長照服務專線：<strong>1966</strong>（全年無休）</p>
+  <p style="margin-top:8px;">本指南依「長期照顧服務申請及給付辦法」（中華民國111年2月1日施行）整理，僅供參考</p>
+  <p style="margin-top:6px;opacity:0.7;font-size:0.85rem;">詳細規定以衛生福利部最新公告為準 | 各地照管中心電話請洽 1966</p>
+</footer>
+
+</body>
+</html>
