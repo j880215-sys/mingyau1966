@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於我們 — 明曜長期照護</title>
+  <meta name="description" content="認識明曜長期照護有限公司，了解我們的成立理念、服務使命與專業團隊。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 40px 28px;
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .value-card .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* 時間線 */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 120px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-year {
+      width: 80px;
+      flex-shrink: 0;
+      text-align: right;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      padding-top: 4px;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px rgba(42,90,158,0.15);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding: 20px 24px;
+      background: white;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .timeline-content p {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* 執照與合規 */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cert-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      transition: border-color var(--transition);
+    }
+
+    .cert-card:hover { border-color: var(--primary); }
+
+    .cert-card .icon { font-size: 2.5rem; margin-bottom: 16px; }
+
+    .cert-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .cert-card p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .values-grid, .cert-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 80px; }
+      .timeline-year { width: 60px; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">
+          <img src="images/logo.png" alt="明曜長期照護 Logo" onerror="this.style.display='none'" />
+          <div class="navbar-logo-text">
+            <span class="navbar-logo-name">明曜長期照護</span>
+            <span class="navbar-logo-sub">新北市私立明曜居家長照機構</span>
+          </div>
+        </a>
+        <div class="navbar-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <ul class="navbar-nav" id="navbar-nav">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html" class="active">關於我們</a></li>
+          <li><a href="services.html">服務項目</a></li>
+          <li><a href="areas.html">服務區域</a></li>
+          <li><a href="knowledge.html">長照知識</a></li>
+          <li><a href="recruit.html">人才招募</a></li>
+          <li><a href="contact.html" class="navbar-cta">立即諮詢</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 頁面 Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">首頁</a>
+        <span>›</span>
+        <span>關於我們</span>
+      </div>
+      <h1>關於明曜長期照護</h1>
+      <p>以專業、溫暖、尊重為核心，提供新北市居家長照服務</p>
+    </div>
+  </div>
+
+  <!-- 公司簡介 -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+        <div class="fade-in">
+          <span class="section-tag">OUR STORY</span>
+          <h2 class="section-title" style="text-align:left; margin-top:12px;">我們的故事</h2>
+          <p style="color:var(--text-mid); line-height:1.9; margin-bottom:16px;">
+            明曜長期照護有限公司，附設新北市私立明曜居家長照機構，以「明亮、曜眼」為名，
+            象徵我們期許為每位長輩的晚年帶來光明與溫暖。
+          </p>
+          <p style="color:var(--text-mid); line-height:1.9; margin-bottom:16px;">
+            機構依新北市政府相關法規核准立案，提供 A 單位社區整合服務、B 單位居家照顧服務，
+            以及 C 碼專業復能服務，服務範圍涵蓋新莊、泰山、板橋、三重、五股、蘆洲、中和等行政區。
+          </p>
+          <p style="color:var(--text-mid); line-height:1.9; margin-bottom:24px;">
+            我們深信：長者不只需要被照顧，更需要被尊重與傾聽。明曜的每一位照服員與專業人員，
+            都以這份信念進入每個家庭，提供最真誠的陪伴。
+          </p>
+          <div style="background:var(--bg-light); border-radius:12px; padding:24px; margin-top:24px;">
+            <div style="font-size:0.85rem; color:var(--accent); font-weight:700; letter-spacing:0.1em; margin-bottom:14px;">OUR CORE BUSINESS · 核心業務</div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <span style="background:white; padding:8px 18px; border-radius:50px; font-weight:600; color:var(--primary); border:1px solid var(--border);">📋 個案管理</span>
+              <span style="background:white; padding:8px 18px; border-radius:50px; font-weight:600; color:var(--primary); border:1px solid var(--border);">🏠 居家服務</span>
+              <span style="background:white; padding:8px 18px; border-radius:50px; font-weight:600; color:var(--primary); border:1px solid var(--border);">⚕️ 居家復能</span>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in" style="border-radius:var(--radius); overflow:hidden; height:400px; background:linear-gradient(135deg,var(--primary-light),var(--primary)); display:flex; align-items:center; justify-content:center; font-size:6rem;">
+          <img src="images/about-story.jpg" alt="明曜長期照護" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='🏡'" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三大核心價值 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">OUR VALUES</span>
+        <h2 class="section-title">三大核心價值</h2>
+        <p class="section-subtitle">以人為本的照護理念，貫穿我們每一個服務細節</p>
+        <div class="divider"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-in">
+          <div class="icon">❤️</div>
+          <h3>身心安頓</h3>
+          <p>不只照顧身體的需求，更關注長輩的心理與情感，讓每位長者感受到真誠的陪伴與關懷。</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="icon">🛡️</div>
+          <h3>安全守護</h3>
+          <p>專業訓練的照護人員，嚴格遵守照護流程與安全規範，讓家屬放心、長輩安心。</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="icon">🌱</div>
+          <h3>自立促進</h3>
+          <p>透過專業復能服務，協助長輩維持並提升自身功能，延緩失能、促進獨立自主的生活能力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 發展時間線 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">MILESTONES</span>
+        <h2 class="section-title">發展里程碑</h2>
+        <p class="section-subtitle">一步一腳印，持續擴大服務範圍與品質</p>
+        <div class="divider"></div>
+      </div>
+      <div class="timeline fade-in">
+        <div class="timeline-item">
+          <div class="timeline-year">成立</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>明曜長期照護有限公司正式成立</h4>
+            <p>依法向新北市政府申請立案，開始提供居家長照服務。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">擴展</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>B 單位居家服務擴展</h4>
+            <p>服務區域從初始行政區逐步擴展至新莊、泰山、板橋、三重、五股、蘆洲、中和共 7 個行政區。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">精進</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>C 碼專業服務正式上線</h4>
+            <p>引進物理治療師、職能治療師、語言治療師、營養師及社工師，提供更完整的專業復能服務。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">現在</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>持續深耕新北市</h4>
+            <p>以 A、B、C 完整服務體系，持續守護新北市長輩的居家生活品質。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合規立案資訊 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">COMPLIANCE</span>
+        <h2 class="section-title">合法立案保障</h2>
+        <p class="section-subtitle">明曜依法立案，受政府監管，保障您與家人的權益</p>
+        <div class="divider"></div>
+      </div>
+      <div class="cert-grid fade-in">
+        <div class="cert-card">
+          <div class="icon">🏛️</div>
+          <h4>新北市政府核准立案</h4>
+          <p>依《長期照顧服務機構設立標準》向新北市政府社會局申請核准設立，合法經營。</p>
+        </div>
+        <div class="cert-card">
+          <div class="icon">📜</div>
+          <h4>長照 2.0 特約機構</h4>
+          <p>與衛福部長照 2.0 體系合作，提供政府補助服務，民眾可依等級享有相應給付。</p>
+        </div>
+        <div class="cert-card">
+          <div class="icon">👨‍⚕️</div>
+          <h4>專業人員資格認證</h4>
+          <p>所有照服員均完成政府規定訓練時數，專業治療師具備國家考試執照，品質有保障。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container fade-in">
+      <h2>想了解更多服務內容？</h2>
+      <p>歡迎來電或填寫諮詢表單，我們將盡快為您說明</p>
+      <div class="cta-banner-btns">
+        <a href="services.html" class="btn btn-white">查看服務項目</a>
+        <a href="contact.html" class="btn btn-accent">立即聯絡我們</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-name">明曜長期照護有限公司</div>
+          <div class="footer-logo-sub">附設新北市私立明曜居家長照機構</div>
+          <p class="footer-desc">深耕新北市的居家長照機構，提供專業、溫暖、以人為本的照護服務。</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook">f</a>
+            <a href="#" title="LINE">L</a>
+            <a href="#" title="Email">@</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速連結</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="areas.html">服務區域</a></li>
+            <li><a href="knowledge.html">長照知識</a></li>
+            <li><a href="recruit.html">人才招募</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>服務項目</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#a-unit">A 單位 社區整合</a></li>
+            <li><a href="services.html#b-unit">B 單位 居家服務</a></li>
+            <li><a href="services.html#c-unit">C 碼 專業服務</a></li>
+            <li><a href="services.html#respite">喘息服務</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>聯絡資訊</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item"><span class="icon">📞</span><span>0968-767-607 / 0968-709-590（李主任）</span></li>
+            <li class="footer-contact-item"><span class="icon">🏛️</span><span>統一編號：90272122</span></li>
+            <li class="footer-contact-item"><span class="icon">💬</span><span>LINE：@059hiyaq</span></li>
+            <li class="footer-contact-item"><span class="icon">✉️</span><span>mingyau.care1966@gmail.com</span></li>
+            <li class="footer-contact-item"><span class="icon">🕐</span><span>週一至週五 09:00–18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 明曜長期照護有限公司 版權所有</span>
+        <span>長照服務專線：<strong style="color:white;">1966</strong>（免費）</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 底部固定行動列 -->
+  <div class="bottom-bar">
+    <button class="bottom-bar-btn bar-family" onclick="document.getElementById('modal-family').classList.add('active')">
+      <span class="bar-icon">👨‍👩‍👧</span>
+      <div class="bar-text">
+        <span class="bar-main">我是家屬</span>
+        <span class="bar-sub">我要諮詢照護服務</span>
+      </div>
+    </button>
+    <button class="bottom-bar-btn bar-worker" onclick="document.getElementById('modal-worker').classList.add('active')">
+      <span class="bar-icon">🩺</span>
+      <div class="bar-text">
+        <span class="bar-main">我是照服員</span>
+        <span class="bar-sub">我要應徵工作</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- 家屬諮詢彈窗 -->
+  <div class="modal-overlay" id="modal-family" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-family').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">👨‍👩‍👧</div>
+        <h3>家屬照護諮詢</h3>
+        <p>專人為您說明申請流程、服務內容與費用，完全免費</p>
+      </div>
+      <a href="tel:0968709590" class="modal-call-btn">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打諮詢專線</div>
+          <div class="modal-call-num">0968-709-590</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn">
+          <span class="line-logo-badge">LINE</span>
+          <div>
+            <div class="modal-line-label">開啟 LINE 線上諮詢</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 照服員應徵彈窗 -->
+  <div class="modal-overlay" id="modal-worker" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-worker').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">🩺</div>
+        <h3>加入明曜照服員團隊</h3>
+        <p>全碼高抽成拆帳、勞健保、三節獎金、積分課程齊全，歡迎投入照護工作的您</p>
+      </div>
+      <a href="tel:0968767607" class="modal-call-btn" style="background:#e07b39;">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打應徵專線</div>
+          <div class="modal-call-num">0968-767-607</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn" style="background:#e07b39;">
+          <span class="line-logo-badge" style="color:#e07b39;">LINE</span>
+          <div>
+            <div class="modal-line-label">LINE 傳送應徵意願</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+      <a href="https://www.104.com.tw/company/1a2x6bnfl9#info06" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-mid);text-decoration:underline;">查看 104 人力銀行職缺頁面 →</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

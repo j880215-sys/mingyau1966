@@ -1,0 +1,668 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聯絡我們 — 明曜長期照護</title>
+  <meta name="description" content="聯絡明曜長期照護，提供免費長照諮詢服務，可電話、LINE、Email 或填寫線上表單聯繫。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* 聯絡資訊卡片 */
+    .contact-info-card {
+      background: var(--primary);
+      border-radius: var(--radius);
+      padding: 40px;
+      color: white;
+    }
+
+    .contact-info-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .contact-info-card .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-method-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method-info { flex: 1; }
+
+    .contact-method-label {
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-bottom: 4px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-method-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-method-sub {
+      font-size: 0.82rem;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .contact-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin: 28px 0;
+    }
+
+    .contact-hours h4 {
+      font-size: 0.88rem;
+      opacity: 0.7;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .contact-hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .hour-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    .hour-day { font-size: 0.82rem; opacity: 0.75; }
+    .hour-time { font-size: 0.92rem; font-weight: 600; }
+
+    /* 諮詢表單 */
+    .form-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-card .form-desc {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .form-group label .required {
+      color: #e53e3e;
+      margin-left: 4px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text-dark);
+      background: white;
+      transition: border-color var(--transition);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(42,90,158,0.1);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-group select { cursor: pointer; }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .form-checkbox label {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* 快速聯絡按鈕 */
+    .quick-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .quick-contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      transition: all var(--transition);
+      text-align: center;
+    }
+
+    .quick-contact-btn:hover {
+      border-color: var(--primary);
+      background: var(--bg-light);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-contact-btn .icon { font-size: 2.5rem; }
+
+    .quick-contact-btn h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .quick-contact-btn p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .quick-contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .form-card { padding: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .quick-contact-grid { grid-template-columns: 1fr; }
+      .contact-hours-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">
+          <img src="images/logo.png" alt="明曜長期照護 Logo" onerror="this.style.display='none'" />
+          <div class="navbar-logo-text">
+            <span class="navbar-logo-name">明曜長期照護</span>
+            <span class="navbar-logo-sub">新北市私立明曜居家長照機構</span>
+          </div>
+        </a>
+        <div class="navbar-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <ul class="navbar-nav" id="navbar-nav">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="services.html">服務項目</a></li>
+          <li><a href="areas.html">服務區域</a></li>
+          <li><a href="knowledge.html">長照知識</a></li>
+          <li><a href="recruit.html">人才招募</a></li>
+          <li><a href="contact.html" class="navbar-cta active">立即諮詢</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 頁面 Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">首頁</a><span>›</span><span>聯絡我們</span>
+      </div>
+      <h1>聯絡我們</h1>
+      <p>免費諮詢，讓我們為您和家人找到最合適的照護方案</p>
+    </div>
+  </div>
+
+  <!-- 快速聯絡方式 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">CONTACT</span>
+        <h2 class="section-title">選擇您方便的聯絡方式</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="quick-contact-grid fade-in">
+        <a href="tel:0968767607" class="quick-contact-btn">
+          <div class="icon">📞</div>
+          <h4>電話諮詢</h4>
+          <p>0968-767-607（李主任）<br />週一至週五 09:00–18:00</p>
+        </a>
+        <a href="#" target="_blank" class="quick-contact-btn">
+          <div class="icon">💬</div>
+          <h4>LINE 聯繫</h4>
+          <p>@059hiyaq<br />加入後傳訊即可諮詢</p>
+        </a>
+        <a href="mailto:mingyau.care1966@gmail.com" class="quick-contact-btn">
+          <div class="icon">✉️</div>
+          <h4>Email 聯繫</h4>
+          <p>mingyau.care1966@gmail.com<br />1 個工作天內回覆</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主要諮詢區 -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- 聯絡資訊 -->
+        <div class="contact-info-card fade-in">
+          <h3>明曜長期照護</h3>
+          <p class="subtitle">附設新北市私立明曜居家長照機構<br />歡迎來電或線上諮詢，我們將竭誠為您服務</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-method-icon">📞</div>
+              <div class="contact-method-info">
+                <div class="contact-method-label">服務電話</div>
+                <div class="contact-method-value">0968-767-607（李主任）</div>
+                <div class="contact-method-value" style="margin-top:4px;">0968-709-590（李主任）</div>
+                <div class="contact-method-sub">週一至週五 09:00–18:00</div>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-method-icon">💬</div>
+              <div class="contact-method-info">
+                <div class="contact-method-label">LINE 官方帳號</div>
+                <div class="contact-method-value">@059hiyaq</div>
+                <div class="contact-method-sub">照顧服務 / 專業服務 諮詢</div>
+                <div class="contact-method-value" style="margin-top:10px;">@390nykje</div>
+                <div class="contact-method-sub">社區整合型中心諮詢</div>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-method-icon">✉️</div>
+              <div class="contact-method-info">
+                <div class="contact-method-label">電子信箱</div>
+                <div class="contact-method-value">mingyau.care1966@gmail.com</div>
+                <div class="contact-method-sub">1 個工作天內回覆</div>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-method-icon">📍</div>
+              <div class="contact-method-info">
+                <div class="contact-method-label">機構地址</div>
+                <div class="contact-method-value">新北市新莊區中安街27號2樓之2</div>
+                <div class="contact-method-sub">來訪請先電話預約</div>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-method-icon">💼</div>
+              <div class="contact-method-info">
+                <div class="contact-method-label">人才招募</div>
+                <div class="contact-method-value">104 人力銀行</div>
+                <div class="contact-method-sub"><a href="recruit.html" style="color:rgba(255,255,255,0.8);text-decoration:underline;">前往招募頁面 →</a></div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="contact-divider" />
+
+          <div class="contact-hours">
+            <h4>服務時間</h4>
+            <div class="contact-hours-grid">
+              <div class="hour-item">
+                <div class="hour-day">週一至週五</div>
+                <div class="hour-time">09:00 – 18:00</div>
+              </div>
+              <div class="hour-item">
+                <div class="hour-day">週六、週日及例假日</div>
+                <div class="hour-time">休息（緊急請電）</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:28px; padding:16px; background:rgba(255,255,255,0.1); border-radius:10px; font-size:0.9rem; opacity:0.85; line-height:1.6;">
+            🆘 長照服務申請請撥打全國免費專線 <strong>1966</strong>，由政府照管專員協助評估
+          </div>
+        </div>
+
+        <!-- 諮詢表單 -->
+        <div class="form-card fade-in">
+          <h3>線上諮詢表單</h3>
+          <p class="form-desc">填寫以下表單，我們將在 1 個工作天內與您聯繫，提供免費諮詢服務。</p>
+
+          <!-- 注意：action 請替換為您的 Formspree 表單 ID，格式：https://formspree.io/f/您的ID -->
+          <form id="contact-form" action="https://formspree.io/f/請填入FormspreeID" method="POST">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">您的姓名 <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="請輸入姓名" required />
+              </div>
+              <div class="form-group">
+                <label for="relation">與長輩關係</label>
+                <select id="relation" name="relation">
+                  <option value="">請選擇</option>
+                  <option value="本人">本人</option>
+                  <option value="子女">子女</option>
+                  <option value="配偶">配偶</option>
+                  <option value="親屬">其他親屬</option>
+                  <option value="其他">其他</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">聯絡電話 <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="請輸入電話號碼" required />
+              </div>
+              <div class="form-group">
+                <label for="district">所在行政區 <span class="required">*</span></label>
+                <select id="district" name="district" required>
+                  <option value="">請選擇</option>
+                  <option value="泰山區">泰山區</option>
+                  <option value="新莊區">新莊區</option>
+                  <option value="板橋區">板橋區</option>
+                  <option value="三重區">三重區</option>
+                  <option value="五股區">五股區</option>
+                  <option value="蘆洲區">蘆洲區</option>
+                  <option value="中和區">中和區</option>
+                  <option value="其他">其他行政區</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">感興趣的服務</label>
+              <select id="service" name="service">
+                <option value="">請選擇</option>
+                <option value="A單位社區整合">A 單位 — 社區整合服務諮詢</option>
+                <option value="B單位居家服務">B 單位 — 居家照顧服務</option>
+                <option value="C碼專業服務">C 碼 — 專業復能服務</option>
+                <option value="喘息服務">喘息服務</option>
+                <option value="尚未確定">尚未確定，需要諮詢</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">諮詢內容或其他說明</label>
+              <textarea id="message" name="message" placeholder="請簡述您的需求、長輩狀況或想詢問的問題…"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="contact_time">方便聯繫時段</label>
+              <select id="contact_time" name="contact_time">
+                <option value="">不限</option>
+                <option value="上午9-12點">上午 09:00 – 12:00</option>
+                <option value="下午13-17點">下午 13:00 – 17:00</option>
+                <option value="傍晚17-18點">傍晚 17:00 – 18:00</option>
+              </select>
+            </div>
+
+            <div class="form-checkbox">
+              <input type="checkbox" id="agree" name="agree" required />
+              <label for="agree">
+                我同意明曜長期照護依個人資料保護法蒐集、處理及利用本表單填寫的個人資料，
+                僅供本次諮詢服務使用，不會提供給第三方。
+              </label>
+            </div>
+
+            <button type="submit" class="form-submit">
+              送出諮詢表單 →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-name">明曜長期照護有限公司</div>
+          <div class="footer-logo-sub">附設新北市私立明曜居家長照機構</div>
+          <p class="footer-desc">深耕新北市的居家長照機構，提供專業、溫暖、以人為本的照護服務。</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook">f</a>
+            <a href="#" title="LINE">L</a>
+            <a href="#" title="Email">@</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速連結</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="areas.html">服務區域</a></li>
+            <li><a href="knowledge.html">長照知識</a></li>
+            <li><a href="recruit.html">人才招募</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>服務項目</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#a-unit">A 單位 社區整合</a></li>
+            <li><a href="services.html#b-unit">B 單位 居家服務</a></li>
+            <li><a href="services.html#c-unit">C 碼 專業服務</a></li>
+            <li><a href="services.html#respite">喘息服務</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>聯絡資訊</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item"><span class="icon">📞</span><span>0968-767-607 / 0968-709-590（李主任）</span></li>
+            <li class="footer-contact-item"><span class="icon">🏛️</span><span>統一編號：90272122</span></li>
+            <li class="footer-contact-item"><span class="icon">💬</span><span>LINE：@059hiyaq</span></li>
+            <li class="footer-contact-item"><span class="icon">✉️</span><span>mingyau.care1966@gmail.com</span></li>
+            <li class="footer-contact-item"><span class="icon">🕐</span><span>週一至週五 09:00–18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 明曜長期照護有限公司 版權所有</span>
+        <span>長照服務專線：<strong style="color:white;">1966</strong>（免費）</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 底部固定行動列 -->
+  <div class="bottom-bar">
+    <button class="bottom-bar-btn bar-family" onclick="document.getElementById('modal-family').classList.add('active')">
+      <span class="bar-icon">👨‍👩‍👧</span>
+      <div class="bar-text">
+        <span class="bar-main">我是家屬</span>
+        <span class="bar-sub">我要諮詢照護服務</span>
+      </div>
+    </button>
+    <button class="bottom-bar-btn bar-worker" onclick="document.getElementById('modal-worker').classList.add('active')">
+      <span class="bar-icon">🩺</span>
+      <div class="bar-text">
+        <span class="bar-main">我是照服員</span>
+        <span class="bar-sub">我要應徵工作</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- 家屬諮詢彈窗 -->
+  <div class="modal-overlay" id="modal-family" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-family').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">👨‍👩‍👧</div>
+        <h3>家屬照護諮詢</h3>
+        <p>專人為您說明申請流程、服務內容與費用，完全免費</p>
+      </div>
+      <a href="tel:0968709590" class="modal-call-btn">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打諮詢專線</div>
+          <div class="modal-call-num">0968-709-590</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn">
+          <span class="line-logo-badge">LINE</span>
+          <div>
+            <div class="modal-line-label">開啟 LINE 線上諮詢</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 照服員應徵彈窗 -->
+  <div class="modal-overlay" id="modal-worker" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-worker').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">🩺</div>
+        <h3>加入明曜照服員團隊</h3>
+        <p>全碼高抽成拆帳、勞健保、三節獎金、積分課程齊全，歡迎投入照護工作的您</p>
+      </div>
+      <a href="tel:0968767607" class="modal-call-btn" style="background:#e07b39;">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打應徵專線</div>
+          <div class="modal-call-num">0968-767-607</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn" style="background:#e07b39;">
+          <span class="line-logo-badge" style="color:#e07b39;">LINE</span>
+          <div>
+            <div class="modal-line-label">LINE 傳送應徵意願</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+      <a href="https://www.104.com.tw/company/1a2x6bnfl9#info06" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-mid);text-decoration:underline;">查看 104 人力銀行職缺頁面 →</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

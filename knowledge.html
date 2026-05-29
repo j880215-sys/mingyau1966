@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>長照知識 — 明曜長期照護</title>
+  <meta name="description" content="長照2.0申請資格、流程、失能等級、給付額度、部分負擔、輔具補助完整說明。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .knowledge-nav {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 88px;
+    }
+
+    .knowledge-nav h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .knowledge-nav ul { display: flex; flex-direction: column; gap: 4px; }
+
+    .knowledge-nav a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      transition: all var(--transition);
+    }
+
+    .knowledge-nav a:hover {
+      background: var(--bg-light);
+      color: var(--primary);
+    }
+
+    .knowledge-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .knowledge-content section {
+      scroll-margin-top: 100px;
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .knowledge-content section:last-child {
+      border-bottom: none;
+    }
+
+    .k-section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .k-section-title .emoji { font-size: 1.8rem; }
+
+    .k-section-sub {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--bg-light);
+    }
+
+    /* 資格卡片 */
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .eligibility-card {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 24px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .eligibility-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eligibility-card ul {
+      list-style: disc;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .eligibility-card li {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* 申請步驟 */
+    .apply-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .apply-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .apply-step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .apply-step-content {
+      flex: 1;
+      padding: 18px 20px;
+      background: white;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .apply-step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .apply-step-content p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* 等級表格 */
+    .level-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .level-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    .level-table thead th {
+      background: var(--primary);
+      color: white;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .level-table tbody td {
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .level-table tbody tr:last-child td { border-bottom: none; }
+    .level-table tbody tr:hover td { background: var(--bg-light); }
+    .level-table .level-num { font-weight: 700; color: var(--primary); }
+    .level-table .amount { font-weight: 700; color: var(--accent); }
+
+    /* 自付比例 */
+    .copay-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .copay-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary);
+    }
+
+    .copay-card.middle { border-top-color: var(--accent); }
+    .copay-card.high { border-top-color: #3b82f6; }
+
+    .copay-pct {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .copay-card.middle .copay-pct { color: var(--accent); }
+    .copay-card.high .copay-pct { color: #3b82f6; }
+
+    .copay-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .copay-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* 輔具補助 */
+    .aids-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .aid-card {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .aid-card .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .aid-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .aid-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 18px 20px;
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-q:hover { background: var(--bg-light); }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 20px 20px;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    .info-box {
+      background: rgba(42,90,158,0.08);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .warn-box {
+      background: rgba(0,151,167,0.08);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .knowledge-layout { grid-template-columns: 1fr; }
+      .knowledge-nav { position: static; display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .eligibility-grid, .copay-grid, .aids-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">
+          <img src="images/logo.png" alt="明曜長期照護 Logo" onerror="this.style.display='none'" />
+          <div class="navbar-logo-text">
+            <span class="navbar-logo-name">明曜長期照護</span>
+            <span class="navbar-logo-sub">新北市私立明曜居家長照機構</span>
+          </div>
+        </a>
+        <div class="navbar-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <ul class="navbar-nav" id="navbar-nav">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="services.html">服務項目</a></li>
+          <li><a href="areas.html">服務區域</a></li>
+          <li><a href="knowledge.html" class="active">長照知識</a></li>
+          <li><a href="recruit.html">人才招募</a></li>
+          <li><a href="contact.html" class="navbar-cta">立即諮詢</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 頁面 Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">首頁</a><span>›</span><span>長照知識</span>
+      </div>
+      <h1>長照知識專區</h1>
+      <p>申請資格、流程、補助額度完整說明，協助您做出最好的決定</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="knowledge-layout">
+
+        <!-- 側邊導覽 -->
+        <aside>
+          <nav class="knowledge-nav">
+            <h4>本頁目錄</h4>
+            <ul>
+              <li><a href="#eligibility">📋 申請資格</a></li>
+              <li><a href="#apply">📝 申請流程</a></li>
+              <li><a href="#levels">📊 失能等級與給付</a></li>
+              <li><a href="#copay">💰 部分負擔說明</a></li>
+              <li><a href="#aids">🛠 輔具與無障礙補助</a></li>
+              <li><a href="#faq">❓ 常見問題</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- 主要內容 -->
+        <div class="knowledge-content">
+
+          <!-- 申請資格 -->
+          <section id="eligibility">
+            <h2 class="k-section-title"><span class="emoji">📋</span>申請資格</h2>
+            <p class="k-section-sub">符合以下任一條件，且有長照需求者，均可申請長照 2.0 服務。</p>
+            <div class="eligibility-grid">
+              <div class="eligibility-card">
+                <h4>👴 年長者</h4>
+                <ul>
+                  <li><strong>65 歲以上</strong>失能老人</li>
+                  <li>經 ADL（日常生活活動功能）評估有照護需求</li>
+                </ul>
+              </div>
+              <div class="eligibility-card">
+                <h4>🧠 失智症患者</h4>
+                <ul>
+                  <li><strong>50 歲以上</strong>失智症患者</li>
+                  <li>需經醫療院所確診並出具診斷書</li>
+                </ul>
+              </div>
+              <div class="eligibility-card">
+                <h4>🏔 原住民</h4>
+                <ul>
+                  <li><strong>55 歲以上</strong>原住民</li>
+                  <li>符合失能條件即可申請</li>
+                </ul>
+              </div>
+              <div class="eligibility-card">
+                <h4>♿ 身心障礙者</h4>
+                <ul>
+                  <li><strong>未滿 65 歲</strong>且領有身心障礙手冊</li>
+                  <li>經評估有照護需求者</li>
+                </ul>
+              </div>
+            </div>
+            <div class="info-box">
+              ℹ️ <strong>小提醒：</strong>申請資格確認後，需由衛福部照管專員到府進行失能評估，依評估結果核定長照等級與給付額度。
+            </div>
+          </section>
+
+          <!-- 申請流程 -->
+          <section id="apply">
+            <h2 class="k-section-title"><span class="emoji">📝</span>申請流程</h2>
+            <p class="k-section-sub">從撥打電話到開始服務，整個流程約需 2～4 週。</p>
+            <div class="apply-steps">
+              <div class="apply-step">
+                <div class="apply-step-num">1</div>
+                <div class="apply-step-content">
+                  <h4>撥打長照專線 1966</h4>
+                  <p>免費撥打全國長照服務專線，由專員登記需求並安排後續評估，服務時間為週一至週五 08:30–12:00、13:30–17:30。</p>
+                </div>
+              </div>
+              <div class="apply-step">
+                <div class="apply-step-num">2</div>
+                <div class="apply-step-content">
+                  <h4>照管專員到府評估</h4>
+                  <p>衛福部派遣照顧管理專員到府進行 ADL 及 IADL 失能評估，確認申請資格。</p>
+                </div>
+              </div>
+              <div class="apply-step">
+                <div class="apply-step-num">3</div>
+                <div class="apply-step-content">
+                  <h4>核定長照等級與給付</h4>
+                  <p>依評估結果核定失能等級（第 2～8 級），並決定各類服務的給付額度。</p>
+                </div>
+              </div>
+              <div class="apply-step">
+                <div class="apply-step-num">4</div>
+                <div class="apply-step-content">
+                  <h4>擬訂個別化照護計畫</h4>
+                  <p>照管專員與家屬共同討論，依個案需求擬訂最適合的照護計畫，並連結合適的服務提供單位。</p>
+                </div>
+              </div>
+              <div class="apply-step">
+                <div class="apply-step-num">5</div>
+                <div class="apply-step-content">
+                  <h4>開始接受服務</h4>
+                  <p>由明曜長期照護等服務單位提供服務，並定期進行複評，依需求調整照護計畫。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 失能等級與給付 -->
+          <section id="levels">
+            <h2 class="k-section-title"><span class="emoji">📊</span>失能等級與給付額度</h2>
+            <p class="k-section-sub">依失能等級核定每月給付額度，各類服務有獨立的給付上限（單位：元）。</p>
+            <div class="level-table-wrap">
+              <table class="level-table">
+                <thead>
+                  <tr>
+                    <th>失能等級</th>
+                    <th>照顧服務（含居家、日照）</th>
+                    <th>專業服務</th>
+                    <th>交通接送</th>
+                    <th>喘息服務（年）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="level-num">第 2 級</td>
+                    <td class="amount">10,020</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td class="amount">32,340</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 3 級</td>
+                    <td class="amount">10,020</td>
+                    <td class="amount">4,000</td>
+                    <td>-</td>
+                    <td class="amount">32,340</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 4 級</td>
+                    <td class="amount">24,430</td>
+                    <td class="amount">4,000</td>
+                    <td>-</td>
+                    <td class="amount">32,340</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 5 級</td>
+                    <td class="amount">24,430</td>
+                    <td class="amount">4,000</td>
+                    <td class="amount">2,000</td>
+                    <td class="amount">48,510</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 6 級</td>
+                    <td class="amount">36,180</td>
+                    <td class="amount">4,000</td>
+                    <td class="amount">2,000</td>
+                    <td class="amount">48,510</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 7 級</td>
+                    <td class="amount">36,180</td>
+                    <td class="amount">4,000</td>
+                    <td class="amount">2,000</td>
+                    <td class="amount">48,510</td>
+                  </tr>
+                  <tr>
+                    <td class="level-num">第 8 級</td>
+                    <td class="amount">36,180</td>
+                    <td class="amount">4,000</td>
+                    <td class="amount">2,000</td>
+                    <td class="amount">48,510</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="warn-box">
+              ⚠️ 上方金額為給付上限，民眾需負擔部分自費（詳見下方「部分負擔說明」）。實際可使用金額依個人狀況而定。
+            </div>
+          </section>
+
+          <!-- 部分負擔 -->
+          <section id="copay">
+            <h2 class="k-section-title"><span class="emoji">💰</span>部分負擔說明</h2>
+            <p class="k-section-sub">依照家庭經濟狀況區分為三種身分，自付比例不同。</p>
+            <div class="copay-grid">
+              <div class="copay-card">
+                <div class="copay-pct">0%</div>
+                <div class="copay-label">低收入戶</div>
+                <div class="copay-desc">符合低收入戶資格者，由政府全額補助，個人不需負擔任何費用。</div>
+              </div>
+              <div class="copay-card middle">
+                <div class="copay-pct">5%</div>
+                <div class="copay-label">中低收入戶</div>
+                <div class="copay-desc">符合中低收入戶資格者，自付 5%，政府補助 95%。</div>
+              </div>
+              <div class="copay-card high">
+                <div class="copay-pct">16%</div>
+                <div class="copay-label">一般戶</div>
+                <div class="copay-desc">一般家庭自付 16%，政府補助 84%，大幅減輕家庭照護負擔。</div>
+              </div>
+            </div>
+            <div class="info-box">
+              ℹ️ 若有聘僱外籍看護工，喘息服務補助將有所調整；偏遠地區另有加成補助。詳情請洽詢 1966 或本機構。
+            </div>
+          </section>
+
+          <!-- 輔具補助 -->
+          <section id="aids">
+            <h2 class="k-section-title"><span class="emoji">🛠</span>輔具與無障礙補助</h2>
+            <p class="k-section-sub">每 3 年最高補助 <strong style="color:var(--primary);">40,000 元</strong>，涵蓋三大類輔具補助。</p>
+            <div class="aids-grid">
+              <div class="aid-card">
+                <div class="icon">🦽</div>
+                <h4>移動與位移輔具</h4>
+                <p>輪椅、助行器、拐杖、移位滑墊、移位腰帶等，協助行動不便者安全移動。</p>
+              </div>
+              <div class="aid-card">
+                <div class="icon">🛁</div>
+                <h4>日常生活輔具</h4>
+                <p>洗澡椅、床邊扶手、防滑墊、多功能床、餐具輔具等，提升日常生活安全與便利。</p>
+              </div>
+              <div class="aid-card">
+                <div class="icon">🏠</div>
+                <h4>居家無障礙改善</h4>
+                <p>裝設扶手、坡道改善、浴廁改裝等，改善居家環境安全，降低跌倒風險。</p>
+              </div>
+            </div>
+            <div class="warn-box">
+              ⚠️ 輔具補助需經職能治療師或物理治療師評估開立，並向地方主管機關申請核准後方可請款。
+            </div>
+          </section>
+
+          <!-- 常見問題 -->
+          <section id="faq">
+            <h2 class="k-section-title"><span class="emoji">❓</span>常見問題</h2>
+            <p class="k-section-sub">整理民眾最常提問的長照相關問題。</p>
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-q">申請長照服務需要準備哪些文件？</div>
+                <div class="faq-a">一般需準備：身分證、健保卡、殘障手冊（如有）、診斷書或病歷摘要（如有）。實際所需文件依個案狀況略有不同，撥打 1966 時專員會詳細說明。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">從申請到開始服務需要多久時間？</div>
+                <div class="faq-a">一般約需 2～4 週。撥打 1966 後，照管專員會安排到府評估（約 1～2 週），評估核定後再由服務單位安排開案，實際時間因地區與案件量有所不同。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">家裡已有外籍看護，還能申請長照服務嗎？</div>
+                <div class="faq-a">可以，但喘息服務的補助額度會有調整。其他服務（如居家照護、專業服務）仍可正常申請，請撥打 1966 洽詢詳細狀況。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">長照服務可以自行選擇服務機構嗎？</div>
+                <div class="faq-a">可以，民眾有自由選擇服務提供單位的權利。核定服務後，您可以自行聯絡包含明曜在內的各服務機構，選擇最適合您的單位開始服務。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">長照服務的時數夠用嗎？可以加購嗎？</div>
+                <div class="faq-a">政府給付的時數依失能等級而定，如需求超出給付範圍，可自費購買額外服務時數。詳細自費方案請直接聯絡明曜洽詢。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">照服員是否每次都派同一人？</div>
+                <div class="faq-a">我們盡量安排固定照服員服務，以建立穩定的照護關係。如遇請假或特殊狀況，會事先通知並安排代班人員，確保服務不中斷。</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q">如何申請輔具補助？</div>
+                <div class="faq-a">需先由物理治療師或職能治療師到府評估，開立輔具建議單，再由民眾或機構協助向地方主管機關申請核准，核准後購買輔具即可申請補助款。明曜的 C 碼專業人員可協助辦理。</div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container fade-in">
+      <h2>還有疑問？讓我們協助您</h2>
+      <p>明曜的專業團隊可以協助您確認申請資格，並引導完成整個申請流程</p>
+      <div class="cta-banner-btns">
+        <a href="tel:0968767607" class="btn btn-white">📞 免費電話諮詢</a>
+        <a href="contact.html" class="btn btn-accent">填寫諮詢表單</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-name">明曜長期照護有限公司</div>
+          <div class="footer-logo-sub">附設新北市私立明曜居家長照機構</div>
+          <p class="footer-desc">深耕新北市的居家長照機構，提供專業、溫暖、以人為本的照護服務。</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook">f</a>
+            <a href="#" title="LINE">L</a>
+            <a href="#" title="Email">@</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速連結</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="areas.html">服務區域</a></li>
+            <li><a href="knowledge.html">長照知識</a></li>
+            <li><a href="recruit.html">人才招募</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>長照知識目錄</h4>
+          <ul class="footer-links">
+            <li><a href="#eligibility">申請資格</a></li>
+            <li><a href="#apply">申請流程</a></li>
+            <li><a href="#levels">失能等級與給付</a></li>
+            <li><a href="#copay">部分負擔說明</a></li>
+            <li><a href="#aids">輔具補助</a></li>
+            <li><a href="#faq">常見問題</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>聯絡資訊</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item"><span class="icon">📞</span><span>0968-767-607 / 0968-709-590（李主任）</span></li>
+            <li class="footer-contact-item"><span class="icon">🏛️</span><span>統一編號：90272122</span></li>
+            <li class="footer-contact-item"><span class="icon">💬</span><span>LINE：@059hiyaq</span></li>
+            <li class="footer-contact-item"><span class="icon">✉️</span><span>mingyau.care1966@gmail.com</span></li>
+            <li class="footer-contact-item"><span class="icon">🕐</span><span>週一至週五 09:00–18:00</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 明曜長期照護有限公司 版權所有</span>
+        <span>長照服務專線：<strong style="color:white;">1966</strong>（免費）</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // FAQ 手風琴
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+
+  <!-- 底部固定行動列 -->
+  <div class="bottom-bar">
+    <button class="bottom-bar-btn bar-family" onclick="document.getElementById('modal-family').classList.add('active')">
+      <span class="bar-icon">👨‍👩‍👧</span>
+      <div class="bar-text">
+        <span class="bar-main">我是家屬</span>
+        <span class="bar-sub">我要諮詢照護服務</span>
+      </div>
+    </button>
+    <button class="bottom-bar-btn bar-worker" onclick="document.getElementById('modal-worker').classList.add('active')">
+      <span class="bar-icon">🩺</span>
+      <div class="bar-text">
+        <span class="bar-main">我是照服員</span>
+        <span class="bar-sub">我要應徵工作</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- 家屬諮詢彈窗 -->
+  <div class="modal-overlay" id="modal-family" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-family').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">👨‍👩‍👧</div>
+        <h3>家屬照護諮詢</h3>
+        <p>專人為您說明申請流程、服務內容與費用，完全免費</p>
+      </div>
+      <a href="tel:0968709590" class="modal-call-btn">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打諮詢專線</div>
+          <div class="modal-call-num">0968-709-590</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn">
+          <span class="line-logo-badge">LINE</span>
+          <div>
+            <div class="modal-line-label">開啟 LINE 線上諮詢</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 照服員應徵彈窗 -->
+  <div class="modal-overlay" id="modal-worker" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-worker').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">🩺</div>
+        <h3>加入明曜照服員團隊</h3>
+        <p>全碼高抽成拆帳、勞健保、三節獎金、積分課程齊全，歡迎投入照護工作的您</p>
+      </div>
+      <a href="tel:0968767607" class="modal-call-btn" style="background:#e07b39;">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打應徵專線</div>
+          <div class="modal-call-num">0968-767-607</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn" style="background:#e07b39;">
+          <span class="line-logo-badge" style="color:#e07b39;">LINE</span>
+          <div>
+            <div class="modal-line-label">LINE 傳送應徵意願</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+      <a href="https://www.104.com.tw/company/1a2x6bnfl9#info06" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-mid);text-decoration:underline;">查看 104 人力銀行職缺頁面 →</a>
+    </div>
+  </div>
+
+</body>
+</html>

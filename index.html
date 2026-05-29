@@ -1,811 +1,723 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>長期照顧服務申請指南</title>
+  <title>明曜長期照護 — 新北市居家長照機構</title>
+  <meta name="description" content="明曜長期照護有限公司，提供新北市居家照護、專業服務、喘息服務，服務區域涵蓋新莊、泰山、板橋、三重、五股、蘆洲、中和。" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    :root {
-      --primary: #1a6b4a;
-      --primary-light: #2d9b6e;
-      --primary-pale: #e8f5ef;
-      --accent: #e07b39;
-      --accent-light: #fdf0e6;
-      --text: #2c2c2c;
-      --text-muted: #666;
-      --border: #d4e8dc;
-      --bg: #f7fbf8;
-      --white: #ffffff;
-      --shadow: 0 2px 12px rgba(0,0,0,0.08);
-      --radius: 12px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: #fff;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-    }
-    .header-top {
-      padding: 18px 32px 14px;
-    }
-    .header-top h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .header-top p {
-      font-size: 0.88rem;
-      opacity: 0.85;
-      margin-top: 2px;
-    }
-    nav {
-      background: rgba(0,0,0,0.15);
+    /* ===== 首頁專屬樣式 ===== */
+    .highlight-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      transition: all var(--transition);
       display: flex;
-      flex-wrap: wrap;
-      gap: 0;
+      flex-direction: column;
+      height: 100%;
     }
-    nav a {
-      color: rgba(255,255,255,0.92);
-      text-decoration: none;
-      padding: 10px 20px;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-      border-right: 1px solid rgba(255,255,255,0.12);
+    .highlight-card:hover {
+      border-color: transparent;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
     }
-    nav a:hover { background: rgba(255,255,255,0.18); color: #fff; }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(120deg, var(--primary-pale) 0%, #d4efe3 100%);
-      padding: 48px 32px 36px;
-      text-align: center;
-      border-bottom: 2px solid var(--border);
+    .highlight-card .card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
     }
-    .hero h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
+    .highlight-card.a-unit .card-icon { background: rgba(42,90,158,0.1); color: var(--primary); }
+    .highlight-card.b-unit .card-icon { background: rgba(0,151,167,0.1); color: var(--accent); }
+    .highlight-card.c-unit .card-icon { background: rgba(59,130,246,0.1); color: #3b82f6; }
+    .highlight-card .card-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-soft);
     }
-    .hero p {
-      color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 24px;
-      font-size: 1.05rem;
-    }
-    .hotline {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 14px 36px;
-      border-radius: 40px;
-      font-size: 1.3rem;
+    .highlight-card .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
       font-weight: 700;
-      letter-spacing: 2px;
-      box-shadow: 0 4px 16px rgba(224,123,57,0.35);
+      font-size: 0.9rem;
+      color: var(--primary);
     }
-    .hotline span { font-size: 0.9rem; font-weight: 400; display: block; }
 
-    /* ── LAYOUT ── */
-    main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+    /* 關於我們區塊 */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img {
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px;
+      background: var(--bg-light);
+      border-radius: var(--radius-sm);
+    }
+    .value-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .value-title { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .value-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
 
-    section { margin-bottom: 56px; }
+    /* 數字統計帶 */
+    .stats-bar {
+      background: var(--text-dark);
+      padding: 56px 0;
+      color: white;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .stat-item .num { font-size: 2.6rem; font-weight: 900; color: var(--accent-light); line-height: 1; margin-bottom: 8px; }
+    .stat-item .unit { font-size: 1rem; opacity: 0.7; }
+    .stat-item .label { font-size: 0.9rem; opacity: 0.7; }
 
-    .section-title {
+    /* 知識卡片 */
+    .knowledge-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .knowledge-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .knowledge-card:hover { border-color: transparent; box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .knowledge-card .icon { font-size: 2rem; margin-bottom: 18px; }
+    .knowledge-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+    .knowledge-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; flex: 1; margin-bottom: 20px; }
+    .knowledge-card a { font-size: 0.9rem; font-weight: 700; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
+
+    /* Hero Visual - Logo 自然融入構圖（無邊框） */
+    .hero-visual-logo {
+      background: transparent !important;
+      box-shadow: none !important;
+      aspect-ratio: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 520px;
+      overflow: visible;
+    }
+    /* 背景柔和裝飾光暈 */
+    .hero-visual-logo::before,
+    .hero-visual-logo::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+    }
+    .hero-visual-logo::before {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(0,151,167,0.25), transparent 70%);
+      top: 10%; right: 5%;
+    }
+    .hero-visual-logo::after {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(42,90,158,0.22), transparent 70%);
+      bottom: 8%; left: 8%;
+    }
+    .hero-logo-img {
+      max-width: 88%;
+      max-height: 420px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      mix-blend-mode: multiply;
+      filter: drop-shadow(0 12px 32px rgba(42,90,158,0.18));
+    }
+    /* Hero 重設浮動卡 — 變成右下角的單一資訊卡 */
+    .hero-visual-logo .hero-float-card {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      z-index: 3;
+      background: white;
+      padding: 18px 22px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(20,40,80,0.12);
+      border: 1px solid var(--border-soft);
+    }
+    .hero-visual-logo .hero-float-card-top {
+      position: absolute;
+      top: 10px;
+      left: -20px;
+      bottom: auto;
+      right: auto;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+    }
+    .hero-visual-logo .hero-float-card-top .hero-float-icon {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+    .hero-visual-logo .hero-float-card-top .hero-float-title { color: rgba(255,255,255,0.85); }
+    .hero-visual-logo .hero-float-card-top .hero-float-value { color: white; }
+
+    /* Slogan 樣式 */
+    .hero-slogan {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 24px;
     }
-    .section-title .icon {
-      width: 44px; height: 44px;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-    .section-title h2 {
-      font-size: 1.4rem;
-      color: var(--primary);
-      border-bottom: 3px solid var(--primary-light);
-      padding-bottom: 4px;
+    .hero-slogan::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
     }
 
-    /* ── CARDS ── */
-    .card-grid {
+    /* 政府補助亮點 */
+    .hero-subsidy {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(255,209,102,0.18), rgba(255,209,102,0.08));
+      border: 1px solid rgba(255,209,102,0.4);
+      padding: 10px 18px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+    .hero-subsidy strong { color: #c47a00; font-weight: 700; }
+
+    /* 自我檢測區塊 */
+    .selfcheck-section { background: var(--bg-light); }
+    .selfcheck-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 920px;
+      margin: 0 auto;
     }
-    .card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-    .card h3 {
-      color: var(--primary);
-      font-size: 1.05rem;
-      margin-bottom: 10px;
+    .selfcheck-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 14px;
+      padding: 18px 24px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
     }
-    .card h3 .badge {
-      background: var(--primary);
-      color: #fff;
-      border-radius: 6px;
-      padding: 2px 10px;
-      font-size: 0.8rem;
+    .selfcheck-item:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+      box-shadow: var(--shadow);
     }
-    .card ul { padding-left: 18px; }
-    .card ul li { margin-bottom: 6px; color: var(--text); }
-
-    /* ── STEPS ── */
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .step {
-      display: flex;
-      gap: 20px;
-      position: relative;
-    }
-    .step:not(:last-child)::before {
-      content: '';
-      position: absolute;
-      left: 19px;
-      top: 44px;
-      bottom: -10px;
-      width: 2px;
-      background: var(--border);
-    }
-    .step-num {
-      width: 40px; height: 40px;
-      background: var(--primary);
-      color: #fff;
+    .selfcheck-check {
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700;
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-      z-index: 1;
-    }
-    .step-body {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      margin-bottom: 16px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      flex: 1;
-    }
-    .step-body h3 { color: var(--primary); margin-bottom: 6px; }
-    .step-body p, .step-body ul { color: var(--text-muted); font-size: 0.95rem; }
-    .step-body ul { padding-left: 18px; }
-    .step-body ul li { margin-bottom: 4px; }
-
-    /* ── TABLE ── */
-    .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      font-size: 0.95rem;
-    }
-    th {
-      background: var(--primary);
-      color: #fff;
-      padding: 12px 16px;
-      text-align: center;
-      white-space: nowrap;
-    }
-    td {
-      padding: 11px 16px;
-      border-bottom: 1px solid #eef3f0;
-      text-align: center;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) td { background: var(--primary-pale); }
-    .level-badge {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 20px;
-      padding: 2px 12px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* ── INFO BOXES ── */
-    .info-box {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      box-shadow: var(--shadow);
-      border-left: 5px solid var(--primary);
-      margin-bottom: 16px;
-    }
-    .info-box h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.05rem; }
-    .info-box ul { padding-left: 20px; }
-    .info-box li { margin-bottom: 6px; }
-
-    .warn-box {
-      background: var(--accent-light);
-      border-left-color: var(--accent);
-    }
-    .warn-box h3 { color: var(--accent); }
-
-    /* ── CO-PAY TABLE ── */
-    .copay-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .copay-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      border: 2px solid var(--border);
-      text-align: center;
-    }
-    .copay-card.low { border-color: #4caf50; }
-    .copay-card.mid { border-color: #2196f3; }
-    .copay-card.gen { border-color: var(--accent); }
-    .copay-card .label {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .copay-card.low .label { color: #2e7d32; }
-    .copay-card.mid .label { color: #1565c0; }
-    .copay-card.gen .label { color: #bf360c; }
-    .copay-card .rate {
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 8px 0 4px;
-    }
-    .copay-card.low .rate { color: #4caf50; }
-    .copay-card.mid .rate { color: #2196f3; }
-    .copay-card.gen .rate { color: var(--accent); }
-    .copay-card p { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
-
-    /* ── SERVICE TAGS ── */
-    .tag-grid {
+      background: var(--accent);
+      color: white;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .tag {
-      background: var(--primary-pale);
-      color: var(--primary);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 0.88rem;
-      font-weight: 500;
-    }
-
-    /* ── HIGHLIGHT AMOUNT ── */
-    .amount {
-      font-size: 1.3rem;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       font-weight: 700;
-      color: var(--primary);
-    }
-    .unit { font-size: 0.85rem; color: var(--text-muted); margin-left: 2px; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--primary);
-      color: rgba(255,255,255,0.85);
-      text-align: center;
-      padding: 28px 16px;
       font-size: 0.9rem;
     }
-    footer a { color: rgba(255,255,255,0.9); }
+    .selfcheck-text {
+      font-size: 0.98rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    .selfcheck-cta {
+      text-align: center;
+      margin-top: 40px;
+      padding: 28px;
+      background: white;
+      border-radius: 16px;
+      border: 2px dashed var(--accent);
+    }
+    .selfcheck-cta p {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .header-top { padding: 14px 16px 10px; }
-      .header-top h1 { font-size: 1.2rem; }
-      nav a { padding: 8px 12px; font-size: 0.82rem; }
-      .hero { padding: 32px 16px 28px; }
-      .hero h2 { font-size: 1.4rem; }
-      main { padding: 24px 12px 60px; }
+    @media (max-width: 1024px) {
+      .about-layout { grid-template-columns: 1fr; gap: 56px; }
+      .about-img { max-width: 480px; margin: 0 auto; aspect-ratio: 4/3; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+      .knowledge-cards { grid-template-columns: 1fr; }
+      .hero-visual-logo { min-height: 440px; }
+      .hero-logo-img { max-height: 340px; }
+      .hero-visual-logo .hero-float-card-top { left: 0; }
+    }
+    @media (max-width: 768px) {
+      .about-values { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .stat-item .num { font-size: 2rem; }
+      .selfcheck-grid { grid-template-columns: 1fr; }
+      .hero-visual-logo { min-height: 360px; }
+      .hero-logo-img { max-height: 280px; }
+      .hero-visual-logo .hero-float-card { bottom: 0; right: 0; padding: 12px 16px; }
+      .hero-visual-logo .hero-float-card-top { top: 0; left: 0; padding: 10px 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
-<header>
-  <div class="header-top">
-    <h1>🏥 長期照顧服務申請指南</h1>
-    <p>依據「長期照顧服務申請及給付辦法」整理，提供民眾快速查詢</p>
-  </div>
-  <nav>
-    <a href="#eligibility">申請資格</a>
-    <a href="#apply">如何申請</a>
-    <a href="#levels">失能等級與額度</a>
-    <a href="#services">服務內容</a>
-    <a href="#copay">部分負擔</a>
-    <a href="#special">特殊情況</a>
-    <a href="#aids">輔具補助</a>
-    <a href="#faq">常見問題</a>
+  <!-- 導覽列 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">
+          <img src="images/logo.png" alt="明曜長期照護 Logo" onerror="this.style.display='none'" />
+          <div class="navbar-logo-text">
+            <span class="navbar-logo-name">明曜長期照護</span>
+            <span class="navbar-logo-sub">新北市私立明曜居家長照機構</span>
+          </div>
+        </a>
+        <div class="navbar-toggle" id="nav-toggle" aria-label="開啟選單">
+          <span></span><span></span><span></span>
+        </div>
+        <ul class="navbar-nav" id="navbar-nav">
+          <li><a href="index.html" class="active">首頁</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="services.html">服務項目</a></li>
+          <li><a href="areas.html">服務區域</a></li>
+          <li><a href="knowledge.html">長照知識</a></li>
+          <li><a href="recruit.html">人才招募</a></li>
+          <li><a href="contact.html" class="navbar-cta">立即諮詢</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
-</header>
 
-<!-- ── HERO ── -->
-<div class="hero">
-  <h2>需要長照服務？從這裡開始</h2>
-  <p>無論是您本人或家中長輩需要照顧協助，只要符合資格，都可以申請政府補助的長照服務。</p>
-  <div class="hotline">
-    📞 1966 長照專線
-    <span>免費撥打，全年無休</span>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content fade-in">
+          <div class="hero-tag">✦ 新北市政府核准立案 · 長照2.0特約機構</div>
+          <div class="hero-slogan">Brighten Your Life · 明曜居家關心您</div>
+          <h1>用心陪伴<br /><em>溫暖每一個家</em></h1>
+          <p>明曜長期照護深耕新北市，提供居家照顧、專業復能、喘息服務等完整長照服務，讓長輩在熟悉的家中，享有尊嚴與安全的照護。</p>
+          <div class="hero-subsidy">
+            <span style="font-size:1.1rem;">💰</span>
+            <span>費用依服務項目，<strong>政府補助 84～100%</strong>，民眾自付額最低 0%</span>
+          </div>
+          <div class="hero-btns">
+            <a href="contact.html" class="btn btn-primary">免費諮詢服務 →</a>
+            <a href="services.html" class="btn btn-outline">了解服務項目</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="num"><span data-count="7">0</span></div>
+              <div class="label">服務行政區</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num"><span data-count="3">0</span></div>
+              <div class="label">服務單位類型</div>
+            </div>
+            <div class="hero-stat">
+              <div class="num">1966</div>
+              <div class="label">長照服務專線</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual hero-visual-logo fade-in">
+          <img src="images/logo.png" alt="明曜長期照護 Logo" class="hero-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="hero-visual-placeholder" style="display:none;">🏡</div>
+          <div class="hero-float-card hero-float-card-top">
+            <div class="hero-float-icon">💰</div>
+            <div>
+              <div class="hero-float-title">政府補助</div>
+              <div class="hero-float-value">84 ~ 100 %</div>
+            </div>
+          </div>
+          <div class="hero-float-card">
+            <div class="hero-float-icon">📞</div>
+            <div>
+              <div class="hero-float-title">免費諮詢專線</div>
+              <div class="hero-float-value">0968-767-607</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 自我檢測 -->
+  <section class="section selfcheck-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Self Check</span>
+        <h2 class="section-title">您家中是否有<br />以下狀況？</h2>
+        <p class="section-subtitle">若您身邊親友有以下任一情況，都可能是長期照顧服務的對象，<br />明曜可協助您申請政府補助、安排合適的照護服務</p>
+      </div>
+      <div class="selfcheck-grid fade-in">
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">需要協助煮飯與餵食</div></div>
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">如廁、洗澡及穿脫衣物需他人協助</div></div>
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">移位走動須他人協助</div></div>
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">失智患者、失能身心障礙者</div></div>
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">陪同外出、就醫及代購</div></div>
+        <div class="selfcheck-item"><div class="selfcheck-check">✓</div><div class="selfcheck-text">癌症、骨折、中風患者</div></div>
+        <div class="selfcheck-item" style="grid-column:1/-1;"><div class="selfcheck-check">✓</div><div class="selfcheck-text">日常生活需他人協助的獨居老人或衰弱老人</div></div>
+      </div>
+      <div class="selfcheck-cta fade-in">
+        <p>符合任一項，<strong>都可以申請長照服務</strong>！明曜專人協助您完成申請流程</p>
+        <a href="contact.html" class="btn btn-accent">立即免費諮詢 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三大服務 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Our Services</span>
+        <h2 class="section-title">三大服務單位<br />全方位守護您的家人</h2>
+        <p class="section-subtitle">從社區整合到居家照護與專業復能，明曜提供長照2.0完整服務體系</p>
+      </div>
+      <div class="grid-3">
+        <div class="highlight-card a-unit fade-in">
+          <div class="card-icon">🏢</div>
+          <span class="badge badge-primary" style="align-self:flex-start;margin-bottom:14px;">A 單位</span>
+          <h3 class="card-title">社區整合服務中心</h3>
+          <p class="card-text">提供長照資源連結與諮詢，協助民眾了解申請流程、評估需求，是進入長照服務的第一道門。</p>
+          <div class="card-meta">📍 泰山區</div>
+          <a href="services.html#a-unit" class="card-link">了解更多 →</a>
+        </div>
+        <div class="highlight-card b-unit fade-in">
+          <div class="card-icon">🏠</div>
+          <span class="badge badge-accent" style="align-self:flex-start;margin-bottom:14px;">B 單位</span>
+          <h3 class="card-title">居家照顧服務</h3>
+          <p class="card-text">由受過專業訓練的照服員進入家中，提供身體照護、日常生活協助、家事服務，讓長輩舒適留在自己家中生活。</p>
+          <div class="card-meta">📍 新莊、泰山、板橋、三重、五股、蘆洲、中和</div>
+          <a href="services.html#b-unit" class="card-link" style="color:var(--accent);">了解更多 →</a>
+        </div>
+        <div class="highlight-card c-unit fade-in">
+          <div class="card-icon">⚕️</div>
+          <span class="badge badge-blue" style="align-self:flex-start;margin-bottom:14px;">C 碼</span>
+          <h3 class="card-title">專業復能服務</h3>
+          <p class="card-text">由物理治療師、職能治療師、語言治療師、營養師及社工師等專業人員到宅提供評估與介入。</p>
+          <div class="card-meta">📍 新莊、板橋、三重、中和</div>
+          <a href="services.html#c-unit" class="card-link" style="color:#3b82f6;">了解更多 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 數字統計 -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in"><div class="num"><span data-count="7">0</span><span class="unit"> 區</span></div><div class="label">服務行政區域</div></div>
+        <div class="stat-item fade-in"><div class="num"><span data-count="5">0</span><span class="unit"> 類</span></div><div class="label">專業服務人員</div></div>
+        <div class="stat-item fade-in"><div class="num"><span data-count="1966">0</span></div><div class="label">長照服務專線</div></div>
+        <div class="stat-item fade-in"><div class="num"><span data-count="100">0</span><span class="unit"> %</span></div><div class="label">合法立案機構</div></div>
+      </div>
+    </div>
   </div>
-</div>
 
-<main>
-
-  <!-- ── 1. 申請資格 ── -->
-  <section id="eligibility">
-    <div class="section-title">
-      <div class="icon">✅</div>
-      <h2>一、申請資格</h2>
-    </div>
-    <p style="color:var(--text-muted); margin-bottom:18px;">因身心失能，且符合以下任一條件者，均可申請長照服務：</p>
-    <div class="card-grid">
-      <div class="card">
-        <h3>👴 年長者</h3>
-        <ul>
-          <li><strong>65 歲以上</strong>（一般民眾）</li>
-          <li><strong>55 歲以上</strong>（原住民身分）</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>♿ 身心障礙者</h3>
-        <ul>
-          <li>領有<strong>身心障礙證明</strong>者（不限年齡）</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🧠 失智症患者</h3>
-        <ul>
-          <li><strong>50 歲以上</strong>且經確診之失智症患者</li>
-        </ul>
-      </div>
-    </div>
-    <div class="info-box warn-box" style="margin-top:18px;">
-      <h3>⚠️ 不適用情況</h3>
-      <ul>
-        <li>住宿式機構（如護理之家、養護機構）的服務使用者，不適用本辦法，另有其他規定</li>
-        <li>評估結果為<strong>第1級（未失能）</strong>者，不納入給付範圍</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── 2. 如何申請 ── -->
-  <section id="apply">
-    <div class="section-title">
-      <div class="icon">📋</div>
-      <h2>二、如何申請長照服務</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <h3>撥打 1966 或向照管中心申請</h3>
-          <p>撥打長照服務專線 <strong>1966</strong>，或直接向當地<strong>長期照顧管理中心（照管中心）</strong>或<strong>縣市主管機關</strong>提出申請。</p>
+  <!-- 關於我們 -->
+  <section class="section">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-img fade-in">
+          <img src="images/about-photo.jpg" alt="明曜長期照護團隊" onerror="this.style.display='none'; this.parentElement.innerHTML='🏥'" />
         </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <h3>專員到府評估</h3>
-          <p>照管中心會派專員到家中進行失能程度評估，評估項目包含日常生活活動（ADL）、工具性日常活動（IADL）、認知功能等。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <h3>核定長照需要等級與給付額度</h3>
-          <p>依評估結果核定<strong>第2至第8級</strong>的長照需要等級，並核定每月可使用的服務給付額度。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <h3>擬訂照顧計畫</h3>
-          <p>社區整合型服務中心（A單位）的個案管理員會依需求擬訂照顧計畫，連結適合的服務。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <h3>開始接受服務</h3>
-          <p>服務提供單位依照顧計畫定期提供服務，您只需支付<strong>部分負擔</strong>費用，其餘由政府補助。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">6</div>
-        <div class="step-body">
-          <h3>定期複評（約每年一次）</h3>
-          <p>身體狀況改變時會重新評估等級與額度。若連續兩次評估均為第8級，可延長至<strong>每2年複評一次</strong>。</p>
+        <div class="fade-in">
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title" style="text-align:left;">關於明曜長期照護</h2>
+          <p style="color:var(--text-mid); line-height:1.9; margin-bottom:16px; font-size:1.02rem;">
+            明曜長期照護有限公司，附設新北市私立明曜居家長照機構，依法向新北市政府立案，致力提供新北市民眾高品質的長期照護服務。
+          </p>
+          <p style="color:var(--text-mid); line-height:1.9; font-size:1.02rem;">
+            我們相信，每位長輩都有權在自己熟悉的家中，以尊嚴的方式安度晚年。透過專業訓練的照護團隊與完善的服務網絡，讓您的家人得到最妥善的照顧。
+          </p>
+          <div class="about-values">
+            <div class="value-item"><div class="value-icon">💚</div><div><div class="value-title">專業照護</div><div class="value-text">照服員均接受政府認可訓練</div></div></div>
+            <div class="value-item"><div class="value-icon">🔐</div><div><div class="value-title">合法立案</div><div class="value-text">新北市政府正式核准立案</div></div></div>
+            <div class="value-item"><div class="value-icon">🤝</div><div><div class="value-title">以人為本</div><div class="value-text">量身規劃個別照護計畫</div></div></div>
+            <div class="value-item"><div class="value-icon">🌐</div><div><div class="value-title">在地深耕</div><div class="value-text">深耕新北市，快速回應</div></div></div>
+          </div>
+          <a href="about.html" class="btn btn-primary" style="margin-top:36px;">認識明曜 →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 3. 失能等級與給付額度 ── -->
-  <section id="levels">
-    <div class="section-title">
-      <div class="icon">📊</div>
-      <h2>三、失能等級與每月給付額度</h2>
-    </div>
-    <p style="color:var(--text-muted); margin-bottom:18px;">依失能程度分為第2級至第8級，等級越高代表失能程度越嚴重，可使用的服務額度也越多。</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>長照需要等級</th>
-            <th>照顧及<br>專業服務<br>（元／月）</th>
-            <th>交通接送<br>第一類（月）</th>
-            <th>交通接送<br>第二類（月）</th>
-            <th>交通接送<br>第三類（月）</th>
-            <th>交通接送<br>第四類（月）</th>
-            <th>輔具及無障礙<br>改善（3年）</th>
-            <th>喘息服務<br>（年）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="level-badge">第2級</span></td>
-            <td><strong>10,020</strong></td>
-            <td rowspan="7">1,680</td>
-            <td rowspan="7">1,840</td>
-            <td rowspan="7">2,000</td>
-            <td rowspan="7">2,400</td>
-            <td rowspan="7">40,000</td>
-            <td rowspan="5" style="background:#e8f5ef">32,340</td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第3級</span></td>
-            <td><strong>15,460</strong></td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第4級</span></td>
-            <td><strong>18,580</strong></td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第5級</span></td>
-            <td><strong>24,100</strong></td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第6級</span></td>
-            <td><strong>28,070</strong></td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第7級</span></td>
-            <td><strong>32,090</strong></td>
-            <td rowspan="2" style="background:#d4efe3;font-weight:700;color:#1a6b4a;">48,510</td>
-          </tr>
-          <tr>
-            <td><span class="level-badge">第8級</span></td>
-            <td><strong>36,180</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:10px;">※ 交通接送分類：第一類（都市小縣市）、第二類（中型縣市）、第三類（大型縣市）、第四類（偏遠地區）。各類額度不可互相流用。</p>
-    <div class="info-box" style="margin-top:18px;">
-      <h3>📌 額度使用規則</h3>
-      <ul>
-        <li><strong>照顧及交通接送：</strong>按月給付，未使用完的額度可保留6個月，期滿歸零</li>
-        <li><strong>輔具及居家無障礙改善：</strong>每3年給付一次</li>
-        <li><strong>喘息服務：</strong>每年給付一次</li>
-        <li>各項目額度<strong>不可互相流用</strong></li>
-      </ul>
+  <!-- 申請流程 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">How to Apply</span>
+        <h2 class="section-title">如何申請長照服務</h2>
+        <p class="section-subtitle">只需幾個簡單步驟，即可開始享有政府補助的長照服務</p>
+      </div>
+      <div class="steps fade-in" style="grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto;">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">明曜居家專人諮詢</div>
+          <div class="step-text">撥打 0968-767-607（李主任）或加 LINE @059hiyaq，由專人協助您了解服務內容</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">撥打 1966 評估</div>
+          <div class="step-text">撥打長照服務專線 1966，由照管專員到府評估失能等級與給付額度</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">取得長照服務</div>
+          <div class="step-text">明曜專業團隊進入您家中，提供安心可靠的長照服務</div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="knowledge.html" class="btn btn-outline">了解詳細申請流程</a>
+      </div>
     </div>
   </section>
 
-  <!-- ── 4. 服務內容 ── -->
-  <section id="services">
-    <div class="section-title">
-      <div class="icon">🤝</div>
-      <h2>四、長照服務內容</h2>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <h3>🏠 居家照顧服務</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">服務人員到家中提供協助</p>
-        <div class="tag-grid">
-          <span class="tag">基本身體清潔</span>
-          <span class="tag">協助沐浴洗頭</span>
-          <span class="tag">協助進食</span>
-          <span class="tag">餐食照顧（備餐）</span>
-          <span class="tag">翻身拍背</span>
-          <span class="tag">肢體關節活動</span>
-          <span class="tag">陪同就醫</span>
-          <span class="tag">家務協助</span>
-          <span class="tag">陪伴服務</span>
-          <span class="tag">代購代送服務</span>
-          <span class="tag">管路清潔護理</span>
-          <span class="tag">血糖監測</span>
+  <!-- 服務區域預覽 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Service Area</span>
+        <h2 class="section-title">服務區域</h2>
+        <p class="section-subtitle">深耕新北市多個行政區，讓您在家附近就能獲得完善的長照服務</p>
+      </div>
+      <div class="area-grid fade-in">
+        <div class="area-card">
+          <div class="area-card-header"><div class="area-card-icon" style="background:rgba(42,90,158,0.1);">🏢</div><div><div class="area-card-title">A 單位</div><div class="area-card-subtitle">社區整合服務</div></div></div>
+          <div class="area-districts"><span class="district-tag">泰山區</span></div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-header"><div class="area-card-icon" style="background:rgba(0,151,167,0.1);">🏠</div><div><div class="area-card-title">B 單位</div><div class="area-card-subtitle">居家服務</div></div></div>
+          <div class="area-districts">
+            <span class="district-tag">新莊</span><span class="district-tag">泰山</span><span class="district-tag">板橋</span><span class="district-tag">三重</span><span class="district-tag">五股</span><span class="district-tag">蘆洲</span><span class="district-tag">中和</span>
+          </div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-header"><div class="area-card-icon" style="background:rgba(59,130,246,0.1);">⚕️</div><div><div class="area-card-title">C 碼</div><div class="area-card-subtitle">專業復能</div></div></div>
+          <div class="area-districts">
+            <span class="district-tag">新莊</span><span class="district-tag">板橋</span><span class="district-tag">三重</span><span class="district-tag">中和</span>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <h3>🏢 日間照顧服務</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">白天到日照中心接受照顧，夜晚回家</p>
-        <div class="tag-grid">
-          <span class="tag">生活照顧</span>
-          <span class="tag">健康促進</span>
-          <span class="tag">文康休閒活動</span>
-          <span class="tag">備餐服務</span>
-          <span class="tag">家屬諮詢</span>
-        </div>
-        <p style="margin-top:12px;font-size:0.9rem;">可選全日或半日服務，交通接送另計</p>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="areas.html" class="btn btn-primary">查看完整服務地圖 →</a>
       </div>
-      <div class="card">
-        <h3>👨‍👩‍👧 家庭托顧服務</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">由家庭托顧服務員在其家中提供照顧</p>
-        <div class="tag-grid">
-          <span class="tag">身體照顧</span>
-          <span class="tag">日常生活照顧</span>
-          <span class="tag">安全性照顧</span>
-          <span class="tag">備餐服務</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>🩺 專業服務</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">由專業人員到宅提供評估與指導</p>
-        <div class="tag-grid">
-          <span class="tag">復能照護（物理／職能治療）</span>
-          <span class="tag">營養照護</span>
-          <span class="tag">進食與吞嚥照護</span>
-          <span class="tag">居家護理指導</span>
-          <span class="tag">困擾行為照護</span>
-          <span class="tag">居家環境安全規劃</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>🚌 交通接送服務</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;"><strong>限用於下列目的</strong></p>
-        <div class="tag-grid">
-          <span class="tag">就醫接送</span>
-          <span class="tag">定期復健接送</span>
-          <span class="tag">透析治療（洗腎）接送</span>
-        </div>
-        <p style="margin-top:12px;font-size:0.88rem;color:var(--text-muted);">由持職業駕照駕駛員提供，各地費率由地方政府公告</p>
-      </div>
-      <div class="card">
-        <h3>😮‍💨 喘息服務（給家庭照顧者）</h3>
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:10px;">讓辛苦的家庭照顧者得到暫時休息</p>
-        <div class="tag-grid">
-          <span class="tag">居家喘息（每次2小時起）</span>
-          <span class="tag">日照中心喘息（全日／半日）</span>
-          <span class="tag">機構住宿式喘息</span>
-          <span class="tag">巷弄長照站喘息</span>
-          <span class="tag">夜間喘息</span>
-        </div>
-      </div>
-    </div>
-    <div class="info-box warn-box" style="margin-top:20px;">
-      <h3>⚠️ 無喘息服務的情況</h3>
-      <ul>
-        <li>長照給付對象無家庭照顧者，且無其他可協助照顧的人</li>
-        <li>已依身心障礙者相關法令接受臨時及短期照顧服務者</li>
-      </ul>
     </div>
   </section>
 
-  <!-- ── 5. 部分負擔 ── -->
-  <section id="copay">
-    <div class="section-title">
-      <div class="icon">💰</div>
-      <h2>五、部分負擔（自付金額）</h2>
-    </div>
-    <p style="color:var(--text-muted); margin-bottom:22px;">使用長照服務需依身分別自付部分費用，其餘由政府補助。費用由服務單位於服務後向您收取。</p>
-    <div class="copay-grid">
-      <div class="copay-card low">
-        <div class="label">🟢 長照低收入戶</div>
-        <div class="rate">0%</div>
-        <p>列冊低收入戶、中低收入戶，或符合中低收入老人生活津貼（第一款）資格者</p>
-        <p style="margin-top:8px;font-weight:600;">完全免費</p>
+  <!-- 長照知識 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Knowledge</span>
+        <h2 class="section-title">長照知識專區</h2>
+        <p class="section-subtitle">了解申請資格、補助額度與各類服務，做出最適合家人的決定</p>
       </div>
-      <div class="copay-card mid">
-        <div class="label">🔵 長照中低收入戶</div>
-        <div class="rate">5%</div>
-        <p>符合中低收入老人生活津貼（第二款）或身心障礙者生活補助資格者</p>
-        <p style="margin-top:8px;font-size:0.83rem;">照顧及專業服務部分負擔5%</p>
+      <div class="knowledge-cards">
+        <div class="knowledge-card fade-in"><div class="icon">📋</div><h3>申請資格</h3><p>65歲以上失能長輩、50歲以上失智症患者、55歲以上原住民及身心障礙者均可申請。</p><a href="knowledge.html#eligibility">了解申請資格 →</a></div>
+        <div class="knowledge-card fade-in"><div class="icon">💰</div><h3>補助額度說明</h3><p>依失能等級 2～8 級核定不同給付額度，民眾只需負擔部分自費，最低 0% 自付比例。</p><a href="knowledge.html#levels">查看給付額度 →</a></div>
+        <div class="knowledge-card fade-in"><div class="icon">🛠</div><h3>輔具與無障礙補助</h3><p>每 3 年最高補助 40,000 元，涵蓋移位輔具、生活輔具及居家無障礙環境改善。</p><a href="knowledge.html#aids">了解輔具補助 →</a></div>
       </div>
-      <div class="copay-card gen">
-        <div class="label">🟠 長照一般戶</div>
-        <div class="rate">16%</div>
-        <p>前兩款以外者</p>
-        <p style="margin-top:8px;font-size:0.83rem;">照顧及專業服務部分負擔16%</p>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="knowledge.html" class="btn btn-outline">前往長照知識專區</a>
       </div>
-    </div>
-    <div class="info-box" style="margin-top:20px;">
-      <h3>📌 免部分負擔的項目</h3>
-      <ul>
-        <li>照顧管理服務（AA01、AA02）</li>
-        <li>政策鼓勵服務（如夜間、例假日加計、特殊案例加計等）</li>
-        <li>輪椅量身訂製（EC03）、輪椅附加功能（EC04～EC06）、擺位系統、氣墊床等特定輔具</li>
-      </ul>
-    </div>
-    <div class="info-box warn-box" style="margin-top:14px;">
-      <h3>⚠️ 需自行負擔的情況</h3>
-      <ul>
-        <li>超過核定給付額度的部分</li>
-        <li>輔具購置超過補助上限的差額</li>
-        <li>非照顧組合表所列的服務</li>
-        <li>與家人共用區域之家務協助，需自付50%</li>
-      </ul>
     </div>
   </section>
 
-  <!-- ── 6. 特殊情況 ── -->
-  <section id="special">
-    <div class="section-title">
-      <div class="icon">⚡</div>
-      <h2>六、特殊情況說明</h2>
-    </div>
-    <div class="info-box">
-      <h3>👨‍👩‍👦 聘僱外籍家庭看護工</h3>
-      <ul>
-        <li>已聘僱外籍看護工者，<strong>照顧及專業服務額度只給付30%</strong></li>
-        <li>且只能用於<strong>專業服務照顧組合</strong>（如復能、護理指導等）</li>
-        <li>交通接送、輔具、喘息服務額度<strong>不受限制，仍可正常使用</strong></li>
-        <li>例外：到宅沐浴車服務仍可使用（但額度仍僅30%）</li>
-      </ul>
-    </div>
-    <div class="info-box">
-      <h3>🏔️ 居住原住民區或離島</h3>
-      <ul>
-        <li>服務支付價格較一般地區<strong>提高約20%</strong>，以鼓勵服務單位在資源不足地區提供服務</li>
-        <li>您的給付額度計算方式<strong>不變</strong>，不受較高的支付價格影響</li>
-        <li>涵蓋地區：花蓮、臺東、澎湖、金門、連江等全部離島，以及各縣市原住民鄉鎮</li>
-      </ul>
-    </div>
-    <div class="info-box warn-box">
-      <h3>🚨 緊急臨時服務</h3>
-      <ul>
-        <li>若發生突發性照顧需求，服務單位可<strong>先行提供臨時服務</strong></li>
-        <li>服務後須立即通知社區整合型服務中心擬訂照顧計畫，並經照管中心確認</li>
-        <li>可臨時提供的服務包含：基本身體清潔、協助沐浴、陪同就醫、尿管鼻胃管清潔等</li>
-      </ul>
-    </div>
-    <div class="info-box">
-      <h3>📅 複評時額度如何計算</h3>
-      <ul>
-        <li><strong>複評等級不變：</strong>複評前剩餘額度可保留至複評計畫核定當月月底</li>
-        <li><strong>複評等級升高：</strong>新等級自核定當月1日生效，複評前剩餘額度可保留至當月月底</li>
-        <li><strong>複評等級降低：</strong>新等級自核定次月1日生效（對您有利的緩衝期），複評前剩餘額度可保留至複評結果核定前一日</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── 7. 輔具補助重點 ── -->
-  <section id="aids">
-    <div class="section-title">
-      <div class="icon">🦽</div>
-      <h2>七、輔具及居家無障礙改善補助（3年40,000元）</h2>
-    </div>
-    <p style="color:var(--text-muted);margin-bottom:18px;">每3年最高可申請40,000元（第7-8級48,510元），用於購置輔具或居家無障礙環境改善。</p>
-    <div class="card-grid">
-      <div class="card">
-        <h3>🚶 移動輔具</h3>
-        <ul>
-          <li>枴杖（不銹鋼/鋁製）</li>
-          <li>助行器</li>
-          <li>帶輪型助步車（助行椅）</li>
-          <li>輪椅（A/B/C三款可選）</li>
-          <li>電動輪椅（限租賃）</li>
-          <li>電動代步車（限租賃）</li>
-          <li>移位機、移位板、移位腰帶</li>
-          <li>爬梯機</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🛏️ 生活照顧輔具</h3>
-        <ul>
-          <li>馬桶增高器、便盆椅、沐浴椅</li>
-          <li>居家用照顧床（電動）</li>
-          <li>氣墊床（預防褥瘡）</li>
-          <li>輪椅座墊（多種款式）</li>
-          <li>足部照護用具</li>
-          <li>衣著用輔具、飲食用輔具</li>
-          <li>居家用生活輔具</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🏠 居家無障礙改善</h3>
-        <ul>
-          <li>安裝固定/可動式扶手</li>
-          <li>設置斜坡板或固定斜坡道</li>
-          <li>消除地面高低差</li>
-          <li>防滑措施（貼條/地面）</li>
-          <li>改善門（加寬/換推拉門）</li>
-          <li>改善浴缸（改淋浴）</li>
-          <li>改善馬桶（蹲改坐）</li>
-          <li>改善流理台高度</li>
-        </ul>
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container fade-in">
+      <h2>需要長照服務諮詢？</h2>
+      <p>我們的專業團隊提供免費諮詢，協助您了解適合的服務方案</p>
+      <div class="cta-banner-btns">
+        <a href="tel:0968767607" class="btn btn-white">📞 電話諮詢</a>
+        <a href="contact.html" class="btn btn-white">填寫諮詢表單</a>
+        <a href="#" class="btn btn-white" target="_blank">💬 LINE 聯繫</a>
       </div>
     </div>
-    <div class="info-box warn-box" style="margin-top:16px;">
-      <h3>📌 注意事項</h3>
-      <ul>
-        <li>部分輔具需由輔具評估人員（物理治療師或職能治療師）出具評估報告才能申請</li>
-        <li>已依身心障礙者身分申購且未達最低使用年限的相同輔具，<strong>不可重複申請</strong></li>
-        <li>購置費用超過補助上限的差額，需自行負擔</li>
-      </ul>
-    </div>
-  </section>
+  </div>
 
-  <!-- ── 8. 常見問題 ── -->
-  <section id="faq">
-    <div class="section-title">
-      <div class="icon">❓</div>
-      <h2>八、常見問題</h2>
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-name">明曜長期照護有限公司</div>
+          <div class="footer-logo-sub">附設新北市私立明曜居家長照機構</div>
+          <p class="footer-desc">深耕新北市的居家長照機構，提供專業、溫暖、以人為本的照護服務，讓每位長輩都能在家中安心生活。</p>
+          <div class="footer-social">
+            <a href="#" title="Facebook">f</a>
+            <a href="#" title="LINE">L</a>
+            <a href="#" title="Email">@</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速連結</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="areas.html">服務區域</a></li>
+            <li><a href="knowledge.html">長照知識</a></li>
+            <li><a href="recruit.html">人才招募</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>服務項目</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#a-unit">A 單位 社區整合</a></li>
+            <li><a href="services.html#b-unit">B 單位 居家服務</a></li>
+            <li><a href="services.html#c-unit">C 碼 專業服務</a></li>
+            <li><a href="services.html#respite">喘息服務</a></li>
+            <li><a href="knowledge.html">長照申請指南</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>聯絡資訊</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item"><span class="icon">📞</span><span>0968-767-607 / 0968-709-590（李主任）</span></li>
+            <li class="footer-contact-item"><span class="icon">🏛️</span><span>統一編號：90272122</span></li>
+            <li class="footer-contact-item"><span class="icon">💬</span><span>LINE：@059hiyaq</span></li>
+            <li class="footer-contact-item"><span class="icon">✉️</span><span>mingyau.care1966@gmail.com</span></li>
+            <li class="footer-contact-item"><span class="icon">🕐</span><span>週一至週五 09:00–18:00</span></li>
+            <li class="footer-contact-item"><span class="icon">📍</span><span>新北市新莊區中安街27號2樓之2</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 明曜長期照護有限公司 版權所有</span>
+        <span>長照服務專線：<strong style="color:white;">1966</strong>（免費）</span>
+      </div>
     </div>
-    <div class="info-box">
-      <h3>Q：我已聘僱外籍看護工，還可以申請長照嗎？</h3>
-      <p>可以，但照顧及專業服務額度只給付30%，且限用於復能、護理等專業服務。交通接送、輔具、喘息服務仍可正常申請。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：長照服務額度沒用完可以累積嗎？</h3>
-      <p>可以。每月未使用完的照顧及交通接送額度，可保留於照顧計畫核定當月起算<strong>6個月內</strong>使用，到期仍未使用則歸零。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：住在偏遠地區，可以申請長照服務嗎？</h3>
-      <p>可以。偏遠地區（包含原住民區及離島）的服務費率較高，政府補助服務單位更多費用以鼓勵前往服務，您的給付額度計算方式不變。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：多久需要重新評估一次？</h3>
-      <p>一般每<strong>1年</strong>評估一次。若連續兩次評估結果都是第8級（應間隔達11個月），則複評期間延長為<strong>24個月</strong>。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：如果突然有緊急照顧需求怎麼辦？</h3>
-      <p>服務單位可先行提供臨時服務，但服務後需立即通知個案管理員擬訂照顧計畫，並經照管中心確認後才可申請費用。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：喘息服務怎麼使用？</h3>
-      <p>喘息服務是給<strong>家庭照顧者</strong>喘息使用的，可選擇居家喘息（服務人員到家）、日間照顧中心喘息或機構住宿喘息。使用期間內不可同時申請其他相同性質補助。</p>
-    </div>
-    <div class="info-box">
-      <h3>Q：長照服務超過核定額度，費用誰出？</h3>
-      <p>超過核定額度的部分需<strong>自行負擔全額</strong>。請事先規劃每月用量，避免超支。</p>
-    </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- 底部固定行動列 -->
+  <div class="bottom-bar">
+    <button class="bottom-bar-btn bar-family" onclick="document.getElementById('modal-family').classList.add('active')">
+      <span class="bar-icon">👨‍👩‍👧</span>
+      <div class="bar-text">
+        <span class="bar-main">我是家屬</span>
+        <span class="bar-sub">我要諮詢照護服務</span>
+      </div>
+    </button>
+    <button class="bottom-bar-btn bar-worker" onclick="document.getElementById('modal-worker').classList.add('active')">
+      <span class="bar-icon">🩺</span>
+      <div class="bar-text">
+        <span class="bar-main">我是照服員</span>
+        <span class="bar-sub">我要應徵工作</span>
+      </div>
+    </button>
+  </div>
 
-<footer>
-  <p>📞 長照服務專線：<strong>1966</strong>（全年無休）</p>
-  <p style="margin-top:8px;">本指南依「長期照顧服務申請及給付辦法」（中華民國111年2月1日施行）整理，僅供參考</p>
-  <p style="margin-top:6px;opacity:0.7;font-size:0.85rem;">詳細規定以衛生福利部最新公告為準 | 各地照管中心電話請洽 1966</p>
-</footer>
+  <!-- 家屬諮詢彈窗 -->
+  <div class="modal-overlay" id="modal-family" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-family').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">👨‍👩‍👧</div>
+        <h3>家屬照護諮詢</h3>
+        <p>專人為您說明申請流程、服務內容與費用，完全免費</p>
+      </div>
+      <a href="tel:0968709590" class="modal-call-btn">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打諮詢專線</div>
+          <div class="modal-call-num">0968-709-590</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn">
+          <span class="line-logo-badge">LINE</span>
+          <div>
+            <div class="modal-line-label">開啟 LINE 線上諮詢</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- 照服員應徵彈窗 -->
+  <div class="modal-overlay" id="modal-worker" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('modal-worker').classList.remove('active')">✕</button>
+      <div class="modal-header">
+        <div class="modal-header-icon">🩺</div>
+        <h3>加入明曜照服員團隊</h3>
+        <p>全碼高抽成拆帳、勞健保、三節獎金、積分課程齊全，歡迎投入照護工作的您</p>
+      </div>
+      <a href="tel:0968767607" class="modal-call-btn" style="background:#e07b39;">
+        <span class="call-icon">📞</span>
+        <div>
+          <div class="modal-call-label">一鍵撥打應徵專線</div>
+          <div class="modal-call-num">0968-767-607</div>
+        </div>
+      </a>
+      <div class="modal-line-row">
+        <a href="https://line.me/R/ti/p/@059hiyaq" target="_blank" rel="noopener" class="modal-line-btn" style="background:#e07b39;">
+          <span class="line-logo-badge" style="color:#e07b39;">LINE</span>
+          <div>
+            <div class="modal-line-label">LINE 傳送應徵意願</div>
+            <div class="modal-line-id">@059hiyaq</div>
+          </div>
+        </a>
+        <div class="modal-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40059hiyaq" alt="LINE QR Code" />
+          <div class="modal-qr-label">掃描加入<br/>LINE 官方帳號</div>
+        </div>
+      </div>
+      <a href="https://www.104.com.tw/company/1a2x6bnfl9#info06" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-mid);text-decoration:underline;">查看 104 人力銀行職缺頁面 →</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
