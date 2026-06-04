@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>明曜居家長照機構 — 網站預覽中心</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#2a5a9e; --primary-dark:#1e4278;
+    --brand:#0097a7; --brand-dark:#007a87;
+    --bg:#eef3f8; --line:#dde6f0; --muted:#64748b;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0; font-family:'Noto Sans TC',sans-serif; background:var(--bg);
+    display:flex; flex-direction:column; color:#1f2937;
+  }
+  header{
+    background:linear-gradient(135deg,var(--primary-dark),var(--primary) 55%,var(--brand));
+    color:#fff; padding:12px 20px; display:flex; align-items:center; gap:12px;
+    box-shadow:0 2px 12px rgba(30,66,120,.25); z-index:5;
+  }
+  header .logo{
+    width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  header h1{font-size:1rem;margin:0;font-weight:900;letter-spacing:.02em;}
+  header .sub{font-size:.72rem;opacity:.8;font-weight:400;margin-top:1px;}
+  header .spacer{flex:1;}
+  header .hint{font-size:.72rem;opacity:.85;display:none;}
+  @media(min-width:880px){header .hint{display:block;}}
+  .tabs{
+    display:flex; gap:6px; padding:10px 14px; background:#fff;
+    border-bottom:1px solid var(--line); overflow-x:auto; white-space:nowrap;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+  }
+  .tabs::-webkit-scrollbar{height:6px;}
+  .tabs::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+  .tab{
+    border:1px solid var(--line); background:#f8fafc; color:#475569;
+    padding:8px 16px; border-radius:999px; font-size:.86rem; font-weight:500;
+    cursor:pointer; transition:.18s; font-family:inherit; flex-shrink:0;
+  }
+  .tab:hover{border-color:var(--brand); color:var(--brand);}
+  .tab.active{
+    background:var(--brand); color:#fff; border-color:var(--brand);
+    box-shadow:0 4px 12px rgba(0,151,167,.3); font-weight:700;
+  }
+  .tab.feature{
+    background:linear-gradient(135deg,var(--primary),var(--brand)); color:#fff; border:none;
+  }
+  .tab.feature.active{box-shadow:0 4px 14px rgba(42,90,158,.4);}
+  .tab .star{font-size:.78rem;margin-right:2px;}
+  .toolbar{
+    display:flex; align-items:center; gap:8px; padding:8px 16px;
+    background:#fff; border-bottom:1px solid var(--line); flex-wrap:wrap;
+  }
+  .toolbar .label{font-size:.74rem;color:var(--muted);font-weight:500;}
+  .seg{display:inline-flex;background:#f1f5f9;border-radius:9px;padding:3px;gap:2px;}
+  .seg button{
+    border:none;background:transparent;color:#475569;font-family:inherit;
+    font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:7px;cursor:pointer;
+    display:flex;align-items:center;gap:5px;transition:.15s;
+  }
+  .seg button.active{background:#fff;color:var(--primary);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+  .toolbar .spacer{flex:1;}
+  .toolbar .filepath{
+    font-size:.72rem;color:#94a3b8;font-family:ui-monospace,monospace;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:40vw;display:none;
+  }
+  @media(min-width:760px){.toolbar .filepath{display:block;}}
+  .open-btn{
+    border:1px solid var(--line);background:#fff;color:var(--primary);
+    font-family:inherit;font-size:.78rem;font-weight:600;padding:6px 13px;
+    border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;
+    text-decoration:none;transition:.15s;
+  }
+  .open-btn:hover{border-color:var(--brand);color:var(--brand);}
+  main{flex:1;overflow:auto;padding:18px;display:flex;justify-content:center;}
+  .frame-wrap{
+    width:100%;height:100%;background:#fff;border-radius:12px;overflow:hidden;
+    box-shadow:0 8px 30px rgba(30,66,120,.12);transition:width .25s ease;
+    border:1px solid var(--line);
+  }
+  .frame-wrap.device{
+    border:8px solid #1f2937;border-radius:26px;
+    box-shadow:0 12px 40px rgba(0,0,0,.3);height:calc(100% - 8px);
+  }
+  iframe{width:100%;height:100%;border:none;display:block;background:#fff;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+    </svg>
+  </div>
+  <div>
+    <h1>明曜居家長照機構</h1>
+    <div class="sub">網站預覽中心 · Website Preview</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="hint">點上方分頁籤切換頁面，右側可切換裝置寬度 👇</div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<div class="toolbar">
+  <span class="label">裝置預覽</span>
+  <div class="seg" id="devices">
+    <button data-w="full" class="active">🖥️ 桌機</button>
+    <button data-w="768">📋 平板</button>
+    <button data-w="375">📱 手機</button>
+  </div>
+  <span class="spacer"></span>
+  <span class="filepath" id="filepath"></span>
+  <a class="open-btn" id="openNew" href="#" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    新視窗開啟此頁
+  </a>
+</div>
+
+<main>
+  <div class="frame-wrap" id="frameWrap">
+    <iframe id="viewer" title="頁面預覽"></iframe>
+  </div>
+</main>
+
+<script>
+  // 本檔與所有頁面在同一資料夾，BASE 為空字串即可
+  var BASE = '';
+  var PAGES = [
+    {name:'新版整合預覽', file:'preview-v2.html', feature:true},
+    {name:'首頁',        file:'index.html'},
+    {name:'關於我們',     file:'about.html'},
+    {name:'服務項目',     file:'services.html'},
+    {name:'服務區域',     file:'areas.html'},
+    {name:'長照知識',     file:'knowledge.html'},
+    {name:'聯絡我們',     file:'contact.html'},
+    {name:'人才招募',     file:'recruit.html'}
+  ];
+
+  var tabsEl    = document.getElementById('tabs');
+  var viewer    = document.getElementById('viewer');
+  var openNew   = document.getElementById('openNew');
+  var filepath  = document.getElementById('filepath');
+  var frameWrap = document.getElementById('frameWrap');
+
+  PAGES.forEach(function(p, i){
+    var b = document.createElement('button');
+    b.className = 'tab' + (p.feature ? ' feature' : '');
+    b.innerHTML = (p.feature ? '<span class="star">⭐</span>' : '') + p.name;
+    b.onclick = function(){ select(i); };
+    tabsEl.appendChild(b);
+    p._btn = b;
+  });
+
+  function select(i){
+    var p = PAGES[i];
+    var src = BASE + p.file;
+    viewer.src = src;
+    openNew.href = src;
+    filepath.textContent = p.file;
+    PAGES.forEach(function(q){ q._btn.classList.remove('active'); });
+    p._btn.classList.add('active');
+  }
+
+  document.querySelectorAll('#devices button').forEach(function(btn){
+    btn.onclick = function(){
+      document.querySelectorAll('#devices button').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var w = btn.getAttribute('data-w');
+      if(w === 'full'){
+        frameWrap.style.width = '100%';
+        frameWrap.classList.remove('device');
+      }else{
+        frameWrap.style.width = w + 'px';
+        frameWrap.classList.add('device');
+      }
+    };
+  });
+
+  select(0);
+</script>
+</body>
+</html>

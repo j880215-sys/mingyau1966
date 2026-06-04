@@ -52,12 +52,14 @@
         <div class="text-gray-400 text-xs">新北市私立合法立案</div>
       </div>
     </div>
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-600">
-      <a href="#about"    class="hover:text-primary transition-colors duration-200 cursor-pointer">關於我們</a>
-      <a href="#services" class="hover:text-primary transition-colors duration-200 cursor-pointer">服務項目</a>
-      <a href="#areas"    class="hover:text-primary transition-colors duration-200 cursor-pointer">服務區域</a>
-      <a href="#why"      class="hover:text-primary transition-colors duration-200 cursor-pointer">為何選擇我們</a>
-      <a href="#contact"  class="hover:text-primary transition-colors duration-200 cursor-pointer">聯絡我們</a>
+    <div class="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium text-gray-600">
+      <a href="#about"      class="hover:text-primary transition-colors duration-200 cursor-pointer">關於我們</a>
+      <a href="#philosophy" class="hover:text-primary transition-colors duration-200 cursor-pointer">照護理念</a>
+      <a href="#services"   class="hover:text-primary transition-colors duration-200 cursor-pointer">服務項目</a>
+      <a href="#process"    class="hover:text-primary transition-colors duration-200 cursor-pointer">服務流程</a>
+      <a href="#areas"      class="hover:text-primary transition-colors duration-200 cursor-pointer">服務區域</a>
+      <a href="#faq"        class="hover:text-primary transition-colors duration-200 cursor-pointer">常見問題</a>
+      <a href="#contact"    class="hover:text-primary transition-colors duration-200 cursor-pointer">聯絡我們</a>
     </div>
     <a href="tel:0968767607" class="hidden md:inline-flex items-center gap-2 bg-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-dark transition-colors duration-200 cursor-pointer shadow-md" aria-label="立即諮詢">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -420,10 +422,78 @@
   </div>
 </section>
 
-<!-- wave -->
+<!-- wave (about → philosophy) -->
 <div class="w-full overflow-hidden bg-mint -mb-1">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
-    <path fill="#fdf8f3" d="M0,30 C280,65 760,5 1100,40 C1240,52 1360,22 1440,38 L1440,60 L0,60 Z"/>
+    <path fill="#ffffff" d="M0,30 C280,65 760,5 1100,40 C1240,52 1360,22 1440,38 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════
+     CARE PHILOSOPHY 照護理念
+══════════════════════════════════════ -->
+<section id="philosophy" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="tag mb-2">OUR PHILOSOPHY</div>
+      <div class="divider-line mx-auto mb-5"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-primary mb-3">以人為本 · 在家安老</h2>
+      <p class="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">我們相信，最好的照護是讓長者在熟悉的家、熟悉的社區裡，保有自主與尊嚴地生活</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- 同心圓照護模式 -->
+      <div class="flex justify-center order-2 md:order-1">
+        <svg viewBox="0 0 360 360" class="w-full max-w-sm" role="img" aria-label="明曜同心圓照護模式：以長者為中心，向外依序為家庭支持、照服員與個案管理、跨專業團隊與社區資源">
+          <circle cx="180" cy="180" r="172" fill="#f0fafa"/>
+          <circle cx="180" cy="180" r="140" fill="#e0f7f7"/>
+          <circle cx="180" cy="180" r="106" fill="#c9ebec"/>
+          <circle cx="180" cy="180" r="72" fill="#7fd4db"/>
+          <circle cx="180" cy="180" r="40" fill="#0097a7"/>
+          <text x="180" y="176" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" font-family="Noto Sans TC,sans-serif">長者</text>
+          <text x="180" y="196" text-anchor="middle" font-size="11" fill="#e0fbfc" font-family="Noto Sans TC,sans-serif">為中心</text>
+          <text x="180" y="124" text-anchor="middle" font-size="12.5" font-weight="700" fill="#00707d" font-family="Noto Sans TC,sans-serif">家庭支持</text>
+          <text x="180" y="90" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2a5a9e" font-family="Noto Sans TC,sans-serif">照服員 · 個案管理</text>
+          <text x="180" y="54" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e4278" font-family="Noto Sans TC,sans-serif">跨專業團隊 · 社區資源</text>
+        </svg>
+      </div>
+      <!-- 三大理念 -->
+      <div class="space-y-4 order-1 md:order-2">
+        <div class="flex gap-4 bg-cream rounded-2xl p-5 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">在地深耕，鄰里照顧</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">深耕新北市 7 個行政區，由熟悉社區的在地團隊就近服務，即時、可靠、有溫度。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-cream rounded-2xl p-5 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">自立支援，延緩失能</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">不是替長者做，而是陪長者一起做，鼓勵運用自身能力，維持生活功能與信心。</p>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-cream rounded-2xl p-5 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-6 4h6m-6-4h.01"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 mb-1">量身規劃，尊重意願</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">依長者身體狀況與生活習慣，量身打造專屬照護計畫，尊重每一個選擇與生活步調。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave (philosophy → services) -->
+<div class="w-full overflow-hidden bg-white -mb-1">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
+    <path fill="#fdf8f3" d="M0,28 C320,62 780,8 1120,42 C1260,54 1370,22 1440,36 L1440,60 L0,60 Z"/>
   </svg>
 </div>
 
@@ -571,8 +641,52 @@
   </div>
 </section>
 
-<!-- wave -->
+<!-- wave (services → process) -->
 <div class="w-full overflow-hidden bg-cream -mb-1">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
+    <path fill="#ffffff" d="M0,25 C350,60 900,5 1200,40 C1300,52 1380,18 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS 服務流程
+══════════════════════════════════════ -->
+<section id="process" class="bg-white py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="tag mb-2">HOW IT WORKS</div>
+      <div class="divider-line mx-auto mb-5"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-primary mb-3">申請服務 4 步驟</h2>
+      <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">長照申請其實很簡單，明曜全程協助，讓您輕鬆上手</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="bg-cream rounded-3xl p-7 border border-gray-100 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-brand text-white flex items-center justify-center text-2xl font-black shadow-lg">1</div>
+        <h3 class="font-bold text-gray-900 mb-2">撥打專線諮詢</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">撥打 0968-767-607（李主任）或長照專線 1966，由專人免費為您說明。</p>
+      </div>
+      <div class="bg-cream rounded-3xl p-7 border border-gray-100 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-brand text-white flex items-center justify-center text-2xl font-black shadow-lg">2</div>
+        <h3 class="font-bold text-gray-900 mb-2">專人到府評估</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">照管專員到府了解狀況，核定長照等級與每月可用的給付額度。</p>
+      </div>
+      <div class="bg-cream rounded-3xl p-7 border border-gray-100 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-black shadow-lg">3</div>
+        <h3 class="font-bold text-gray-900 mb-2">擬定照護計畫</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">依長者需求量身規劃服務項目與時段，與家屬充分溝通確認。</p>
+      </div>
+      <div class="bg-cream rounded-3xl p-7 border border-gray-100 text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-black shadow-lg">4</div>
+        <h3 class="font-bold text-gray-900 mb-2">開始到府服務</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">專業團隊到府提供服務，政府補助 <strong class="text-brand">84～100%</strong>，大幅減輕負擔。</p>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-400 mt-8">※ 符合長照需求等級第 2～8 級者，政府補助 84～100%，低收入戶最高可全額補助</p>
+  </div>
+</section>
+
+<!-- wave (process → why) -->
+<div class="w-full overflow-hidden bg-white -mb-1">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
     <path fill="#f0fafa" d="M0,25 C350,60 900,5 1200,40 C1300,52 1380,18 1440,30 L1440,60 L0,60 Z"/>
   </svg>
@@ -648,8 +762,87 @@
   </div>
 </section>
 
-<!-- wave -->
+<!-- wave (why → team) -->
 <div class="w-full overflow-hidden bg-mint -mb-1">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
+    <path fill="#ffffff" d="M0,20 C400,58 900,8 1200,42 C1300,54 1380,20 1440,35 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════
+     OUR TEAM 專業團隊
+══════════════════════════════════════ -->
+<section id="team" class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="tag mb-2">OUR TEAM</div>
+      <div class="divider-line mx-auto mb-5"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-primary mb-3">專業跨域團隊</h2>
+      <p class="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">整合照顧、護理、復能、營養、社工等多元專業，組成完整照護團隊，全方位守護長者健康</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">個案管理督導</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">統籌照護計畫，全程把關服務品質</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">照顧服務員</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">到府身體照顧與日常生活協助</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">護理師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">健康監測與居家護理指導</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">物理治療師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">復健運動，恢復行動能力</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">職能治療師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">訓練生活自理與手部功能</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">語言治療師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">吞嚥訓練與語言溝通復健</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 21c0-9 7-16 16-16 0 9-7 16-16 16z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 21C8 16 13 11 19 8"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">營養師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">飲食評估與營養調理建議</p>
+      </div>
+      <div class="card bg-cream rounded-2xl p-6 text-center border border-gray-100 cursor-default">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 text-sm mb-1">社工師</h3>
+        <p class="text-gray-400 text-xs leading-relaxed">資源連結與家庭支持服務</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave (team → areas) -->
+<div class="w-full overflow-hidden bg-white -mb-1">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
     <path fill="#fdf8f3" d="M0,20 C400,58 900,8 1200,42 C1300,54 1380,20 1440,35 L1440,60 L0,60 Z"/>
   </svg>
@@ -703,8 +896,116 @@
   </div>
 </section>
 
-<!-- wave -->
+<!-- wave (areas → knowledge) -->
 <div class="w-full overflow-hidden bg-cream -mb-1">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
+    <path fill="#f0fafa" d="M0,30 C300,65 800,5 1100,45 C1250,58 1380,18 1440,35 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════
+     KNOWLEDGE & FAQ 照護新知 / 常見問題
+══════════════════════════════════════ -->
+<section id="faq" class="bg-mint py-20">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+    <!-- 照護新知 -->
+    <div class="text-center mb-12">
+      <div class="tag mb-2">CARE KNOWLEDGE</div>
+      <div class="divider-line mx-auto mb-5"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-primary mb-3">長照知識懶人包</h2>
+      <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">搞懂長照申請、補助與服務，第一次申請也不慌張</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-20">
+      <a href="knowledge.html" class="card block bg-white rounded-3xl p-7 shadow-sm border border-gray-100 cursor-pointer">
+        <div class="w-12 h-12 mb-4 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 mb-2">申請資格與流程</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">誰可以申請長照 2.0？從撥打 1966 到開始服務，完整流程一次看懂。</p>
+        <span class="text-brand text-sm font-semibold inline-flex items-center gap-1">了解更多
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </span>
+      </a>
+      <a href="knowledge.html" class="card block bg-white rounded-3xl p-7 shadow-sm border border-gray-100 cursor-pointer">
+        <div class="w-12 h-12 mb-4 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 9v1m0-9a9 9 0 100 18 9 9 0 000-18z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 mb-2">補助額度與部分負擔</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">各等級補助多少？部分負擔怎麼算？一張表帶您看懂自己要付多少。</p>
+        <span class="text-brand text-sm font-semibold inline-flex items-center gap-1">了解更多
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </span>
+      </a>
+      <a href="knowledge.html" class="card block bg-white rounded-3xl p-7 shadow-sm border border-gray-100 cursor-pointer">
+        <div class="w-12 h-12 mb-4 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-gray-900 mb-2">輔具與居家無障礙</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">輪椅、氣墊床、扶手、無障礙改造，每 3 年最高補助 4 萬元怎麼用。</p>
+        <span class="text-brand text-sm font-semibold inline-flex items-center gap-1">了解更多
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- 常見問題 -->
+    <div class="text-center mb-12">
+      <div class="tag mb-2">FAQ</div>
+      <div class="divider-line mx-auto mb-5"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-primary mb-3">常見問題</h2>
+      <p class="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">家屬最常問的問題，我們一次說清楚</p>
+    </div>
+    <div class="max-w-3xl mx-auto space-y-3">
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>長照服務需要自己付費嗎？補助多少？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">符合長照需求等級第 2～8 級，政府補助 84～100%，一般戶僅需自付 16%；中低收入戶補助 90%、低收入戶可全額補助。實際金額依核定等級與選用的服務項目而定，明曜會協助您試算。</div>
+      </details>
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>如何申請長照服務？需要準備什麼？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">只要撥打長照專線 1966 或直接聯絡明曜 0968-767-607，就會由照管專員到府評估，無需準備繁複文件。從諮詢、評估到開始服務，明曜全程陪伴協助。</div>
+      </details>
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>怎麼知道家中長輩符不符合資格？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">65 歲以上失能長者、55 歲以上失能原住民、50 歲以上失智症者，以及領有身心障礙證明者，皆可申請。不確定也沒關係，歡迎來電由專人協助初步判斷。</div>
+      </details>
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>明曜的服務涵蓋哪些區域？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">B 居家照顧服務涵蓋新莊、泰山、板橋、三重、五股、蘆洲、中和 7 區；C 專業復能服務涵蓋新莊、板橋、三重、中和；A 社區整合服務中心位於泰山區。</div>
+      </details>
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>已經請外籍看護，還可以申請長照嗎？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">可以。聘有外籍看護的家庭仍可申請「喘息服務」與部分專業服務，讓家庭照顧者與看護獲得適度休息，避免長期照顧過勞。</div>
+      </details>
+      <details class="group bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-semibold text-gray-800 list-none [&::-webkit-details-marker]:hidden">
+          <span>申請後多久可以開始服務？</span>
+          <svg class="w-5 h-5 text-brand shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-5 text-gray-500 text-sm leading-relaxed">完成評估與照護計畫擬定後即可安排，明曜會盡快媒合在地照服員，通常於數個工作天內展開服務，讓長者及早獲得照顧。</div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- wave (knowledge → cta) -->
+<div class="w-full overflow-hidden bg-mint -mb-1">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" class="w-full" height="50" aria-hidden="true">
     <path fill="#1e4278" d="M0,30 C300,65 800,5 1100,45 C1250,58 1380,18 1440,35 L1440,60 L0,60 Z"/>
   </svg>
@@ -778,11 +1079,14 @@
       <div>
         <h4 class="text-white font-semibold mb-4 text-sm">快速連結</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href="#about"    class="hover:text-white transition-colors duration-200 cursor-pointer">關於我們</a></li>
-          <li><a href="#services" class="hover:text-white transition-colors duration-200 cursor-pointer">服務項目</a></li>
-          <li><a href="#areas"    class="hover:text-white transition-colors duration-200 cursor-pointer">服務區域</a></li>
-          <li><a href="#why"      class="hover:text-white transition-colors duration-200 cursor-pointer">為何選擇我們</a></li>
-          <li><a href="#contact"  class="hover:text-white transition-colors duration-200 cursor-pointer">聯絡我們</a></li>
+          <li><a href="#about"      class="hover:text-white transition-colors duration-200 cursor-pointer">關於我們</a></li>
+          <li><a href="#philosophy" class="hover:text-white transition-colors duration-200 cursor-pointer">照護理念</a></li>
+          <li><a href="#services"   class="hover:text-white transition-colors duration-200 cursor-pointer">服務項目</a></li>
+          <li><a href="#process"    class="hover:text-white transition-colors duration-200 cursor-pointer">服務流程</a></li>
+          <li><a href="#team"       class="hover:text-white transition-colors duration-200 cursor-pointer">專業團隊</a></li>
+          <li><a href="#areas"      class="hover:text-white transition-colors duration-200 cursor-pointer">服務區域</a></li>
+          <li><a href="#faq"        class="hover:text-white transition-colors duration-200 cursor-pointer">常見問題</a></li>
+          <li><a href="#contact"    class="hover:text-white transition-colors duration-200 cursor-pointer">聯絡我們</a></li>
         </ul>
       </div>
       <div>
